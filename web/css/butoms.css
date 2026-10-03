@@ -1,0 +1,813 @@
+/* Estilos para el contenedor ul */
+.boton-sis ul {
+  list-style: none; /* Elimina los puntos de la lista */
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para el enlace a */
+.boton-sis ul a {
+  text-decoration: none; /* Elimina el subrayado del enlace */
+  display: inline-block; /* Permite aplicar padding y border al enlace */
+}
+
+/* Estilos para el elemento de la lista li (el botón visual) */
+.boton-sis ul a li {
+  padding: 12px 60px; /* Espacio interno alrededor del texto */
+  font-size: 16px; /* Tamaño de la fuente */
+  font-weight: 600; /* Grosor de la fuente (negrita) */
+  color: #fff; /* Color del texto (blanco) */
+  background-color: rgb(0, 110, 255); /* Color de fondo (amarillo) */
+  border: 2px solid rgb(235, 147, 14); /* Borde (amarillo sólido de 2px) */
+  border-radius: 30px; /* Bordes redondeados */
+  transition: all 0.3s ease; /* Transición suave para todos los cambios de propiedad */
+  cursor: pointer; /* Cambia el cursor al pasar por encima (indica que es interactivo) */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  position: relative; /* Para posicionar elementos dentro si fuera necesario */
+  overflow: hidden; /* Oculta cualquier contenido que se salga del borde */
+}
+
+/* Oculta los elementos span dentro del li */
+.boton-sis ul a li span {
+  display: none;
+}
+
+/* Estilos al pasar el ratón por encima del botón */
+.boton-sis ul a li:hover {
+  background-color: #f7a102; /* Ligeramente más oscuro al pasar el ratón */
+  border-color: rgb(37, 107, 236); /* Mantiene el color del borde */
+  box-shadow: 0 4px 6px rgba(2, 7, 36, 0.1); /* Sombra más pronunciada al pasar el ratón */
+}
+
+/* Estilos al hacer clic (activo) en el botón */
+.boton-sis ul a li:active {
+  background-color: rgb(255, 255, 255); /* Fondo blanco al hacer clic */
+  color: rgb(35, 151, 0); /* Texto amarillo al hacer clic */
+  transform: translateY(2px); /* Desplaza ligeramente hacia abajo al hacer clic (efecto de "presionado") */
+}
+
+/* Estilos al enfocar el botón (por ejemplo, al navegar con el teclado) */
+.boton-sis ul a li:focus {
+  outline: none; /* Elimina el contorno predeterminado del navegador */
+  box-shadow: 0 0 0 2px rgba(246, 218, 11, 0.5); /* Añade un resplandor amarillo al enfocar */
+}
+
+
+/*** ESTILOS BOTÓN GROW SKEW ***/
+.btnCas a {
+  margin: 5px;
+}
+
+.btnPri {
+  background: #332f9c;
+  /* color de fondo */
+  color: #ffffff;
+  /* color de fuente */
+  border: 2px solid #332f9c;
+  /* tamaño y color de borde */
+  padding: 16px 50px;
+  border-radius: 10px;
+  /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btnPri:hover {
+  color: #332f9c;
+  /* color de fuente hover */
+}
+
+.btnPri::after {
+  content: "";
+  background: #ffffff;
+  /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.btnPri:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+
+/*** ESTILOS BOTÓN GROW SKEW ***/
+.btnSecund {
+  background: #DF7401;
+  /* color de fondo */
+  color: #ffffff;
+  /* color de fuente */
+  border: 2px solid #DF7401;
+  /* tamaño y color de borde */
+  padding: 16px 20px;
+  border-radius: 10px;
+  /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btnSecund:hover {
+  color: #DF7401;
+  /* color de fuente hover */
+}
+
+.btnSecund::after {
+  content: "";
+  background: #ffffff;
+  /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: -20%;
+  right: -20%;
+  top: 0;
+  bottom: 0;
+  transform: skewX(-45deg) scale(0, 1);
+  transition: all 0.3s ease;
+}
+
+.btnSecund:hover::after {
+  transition: all 0.3s ease-out;
+  transform: skewX(-45deg) scale(1, 1);
+}
+
+@media (max-width: 490px) {
+  .btnCas {
+
+    flex-direction: column;
+    padding: 0px 100px;
+  }
+
+  .btnCas a {
+    margin: 15px;
+    padding: 15px 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .btnCas {
+
+    flex-direction: column;
+    padding: 0px 70px;
+  }
+
+  .btnCas a {
+    margin: 10px;
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+}
+
+.fadein {
+  justify-content: center;
+  display: flex;
+  padding: 0;
+}
+
+.encabezado-color {
+  background: rgb(60, 71, 165);
+}
+
+@media(min-width:992px) {
+  .encabezado-color {
+    background: rgb(255, 255, 255);
+  }
+}
+
+/** Formulario **/
+@keyframes inputAnimation {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes buttonAnimation {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.formulario {
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  padding: 15px 25px;
+  /* background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.753), rgba(255, 255, 255, 0.849)), url(../img/carusel-2.jpg); */
+  background: rgb(255, 255, 255);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 10px rgb(114, 114, 114);
+  animation: inputAnimation 0.5s ease forwards;
+  border: none;
+  z-index: 998;
+}
+
+.formulario div {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.formulario div:last-child {
+  margin-bottom: 0;
+}
+
+.formulario div:nth-child(1),
+.formulario div:nth-child(2),
+.formulario div:nth-child(3) {
+  animation: inputAnimation 0.5s ease forwards;
+}
+
+.formulario div label {
+  color: #333;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.formulario div input {
+  color: #333;
+  width: 100%;
+  padding: 12px;
+  margin: 0px 5px;
+  border: none;
+  border-top: 1px solid rgb(185, 185, 185);
+  border-width: 1px solid rgb(185, 185, 185);
+  border-bottom: 1px solid rgb(185, 185, 185);
+  background-color: rgb(236, 236, 236);
+  transition: all 0.3s;
+  
+  animation: inputAnimation 0.5s ease forwards;
+  border-radius: 40px;
+}
+
+.formulario .icon_form{
+  border-radius: 40px;
+}
+
+.formulario .icon_form i{
+  color: rgb(90, 90, 90);
+}
+
+.formulario div select {
+  color: #333;
+  width: 100%;
+  padding: 12px;
+  margin: 0px 5px;
+  border: none;
+  background-color: #fff;
+  transition: all 0.3s;
+  border-top: 1px solid rgb(185, 185, 185);
+  border-width: 1px solid rgb(185, 185, 185);
+  border-bottom: 1px solid rgb(185, 185, 185);
+  
+  animation: inputAnimation 0.5s ease forwards;
+  border-radius: 15px;
+}
+
+.formulario div select option{
+  background-color: #f2f2f2;
+    color: #333;
+    font-size: 14px;
+    border-radius: 10px; /* Agregar bordes redondeados */
+    padding: 5px 10px;
+}
+
+.formulario div select option:checked{
+  background-color: #007bff;
+    color: #fff;
+}
+
+.formulario div input:hover,
+.formulario div input:focus {
+  background-color: #eee;
+  outline: none;
+  border-color: rgb(60, 71, 165);
+  box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.formulario button {
+  padding: 9px 0px;
+  margin-top: 15px;
+  width: 80%;
+  height: 10%;
+  border: 1px solid rgb(243, 223, 6);
+  background-color: rgb(247, 198, 3);
+  color: white;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+  animation: buttonAnimation 0.5s ease forwards;
+  border-radius: 15px;
+}
+
+.formulario button:hover {
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: rgb(60, 71, 165);
+}
+.formulario button:focus{
+  
+}
+
+@media (min-width: 923px) {
+  .formulario {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: wrap;
+  }
+
+  .formulario form {
+    width: 100%;
+  }
+
+  .formulario .row {
+    align-items: flex-end;
+  }
+
+  .formulario .row>div {
+    flex: 1;
+  }
+
+  .formulario .row>div:last-child {
+    margin-left: 15px;
+  }
+}
+
+.reverva-for {
+  display: none;
+}
+
+@media(max-width: 991px) {
+  .formulario {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: none;
+    box-shadow: none;
+    border-radius: 0x;
+
+    background: transparent;
+    border: none;
+    color: white;
+  }
+
+  .formulario-color {
+    background: rgb(60, 71, 165);
+  }
+
+  .formulario div label {
+    color: white;
+  }
+
+  .formulario button {
+    background: coral;
+    color: rgb(255, 255, 255);
+  }
+
+
+  .reverva-for {
+    display: block;
+  }
+
+}
+
+/**  Media Query Formulario 
+@media(max-width: 1350px){
+  .formulario div input {
+    color: #333;
+    border-radius: px;
+    width: 200px;
+    padding: 12px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.644);
+    animation: inputAnimation 0.5s ease forwards;
+  }
+}
+@media(max-width: 1025px){
+  .formulario div input {
+    color: #333;
+    border-radius: px;
+    width: 180px;
+    padding: 12px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.644);
+    animation: inputAnimation 0.5s ease forwards;
+  }
+}
+@media(max-width: 700px){
+  
+  .formulario{
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .formulario div input {
+    color: #333;
+    border-radius: px;
+    width: 250px;
+    padding: 12px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.644);
+    animation: inputAnimation 0.5s ease forwards;
+  }
+}
+@media(max-width: 913px){
+  .formulario{
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .formulario div{
+    margin: 0;
+  }
+  
+  .formulario div input {
+    color: #333;
+    border-radius: px;
+    margin: 0;
+    width: 700px;
+    height: 10px;
+    padding: px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.644);
+    animation: inputAnimation 0.5s ease forwards;
+    font-size: 10px;
+  }
+}
+@media(max-width: 541px){
+  .formulario{
+    margin: 20px 0px 0px 0px;
+    display: flex;
+    flex-direction: column;
+  }
+  .formulario div{
+    margin: 0;
+  }
+  .formulario div input {
+    color: #333;
+    border-radius: px;
+    margin: 0;
+    width: 220px;
+    height: 10px;
+    padding: px;
+    border: 2px solid transparent;
+    background-color: #fff;
+    transition: all 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.644);
+    animation: inputAnimation 0.5s ease forwards;
+    font-size: 10px;
+  }
+  .formulario div label{
+    font-size: 10px;
+  }
+  .formulario button {
+    padding: 10px 0px;
+    margin-top: 0;
+    width: 100%;
+    height: 10%;
+    border: none;
+    background-color: rgb(60, 71, 165);
+    border-radius: px;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.671);
+    animation: buttonAnimation 0.5s ease forwards;
+  }
+}
+
+
+
+/** AGENCIAS CONTACTO  **/
+.select-agencia {
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.select-agencia label {
+  font-size: 30px;
+  color: rgb(240, 214, 15);
+}
+
+.select-agencia select {
+  border: 2px solid rgb(192, 192, 192);
+  padding: 15px;
+  border-radius: 50px;
+  box-shadow: 0px 5px 15px rgb(124, 124, 124);
+}
+
+.agencias-contact {
+  background: linear-gradient(rgb(255, 255, 255), rgba(145, 144, 144, 0.747)), url(../img/carusel-2.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mapa {
+  /* Ajusta la altura según tus necesidades */
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  border: 4px solid rgb(255, 255, 255);
+}
+
+.mapa iframe {
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.descripcion-agencia1 {
+  margin: 0;
+  padding: 20px;
+  border: 3px solid rgb(255, 255, 255);
+  border-radius: 0px 20px 20px 0px;
+  box-shadow: 0px 5px 15px rgb(124, 124, 124);
+  background: WHITE
+}
+
+.descripcion-agencia2 {
+  border: 3px solid rgb(255, 255, 255);
+  background-image: linear-gradient(0deg,
+      rgb(0, 0, 0, 0.5),
+      rgb(0, 0, 0, 0.5)), url(../img/asistentacon.jpg);
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 5px 15px rgb(124, 124, 124);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: WHITE;
+  font-weight: bold;
+}
+
+.descripcion-agencia1 h1 {
+  font-size: 25px;
+  color: coral;
+}
+
+.descripcion-agencia1 h2 {
+  font-size: 20px;
+}
+
+.descripcion-agencia2 h1 {
+  font-size: 25px;
+  color: rgb(243, 208, 33);
+}
+
+.descripcion-agencia2 h2 {
+  font-size: 20px;
+}
+
+.form-contact .form-floating {
+  border: 2px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgb(124, 124, 124);
+}
+
+.form-contact .col-12 button {
+  background: rgb(60, 71, 165);
+  color: white;
+}
+
+@media(max-width: 765px) {
+  .contenedor-agencias {
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .contenedor-agencias div {
+    border-radius: 0 0 20px 20px;
+  }
+
+  .contenedor-agencias1 {
+    display: flex;
+    justify-content: start;
+  }
+
+  .contenedor-agencias1 div {
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+/** Iconos de contacto agencias **/
+.agencia-titulo {
+  background-image: linear-gradient(0deg,
+      rgba(255, 255, 255, 0.897),
+      rgba(255, 255, 255, 0.911)), url(../img/adultos-jovenes-que-viajan-invierno.jpg);
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgb(219, 219, 219);
+  box-shadow: 0px 5px 15px rgb(202, 202, 202);
+}
+
+.agencia-titulo h1 {
+  font-size: 20px;
+  color: black;
+  padding: 0px 2px 10px;
+}
+
+.icon-custom {
+  color: #ff7f50;
+  margin: 0px 7px;
+  border-radius: 50%;
+  padding: 2%;
+  border: 2px solid coral;
+}
+
+.icon-custom1 {
+  color: #ff7f50;
+  margin: 0px 7px;
+  border-radius: 50%;
+  padding: 8px 9px;
+  border: 2px solid coral;
+}
+
+.datos-agencias {
+  padding: 20px 0px;
+}
+
+.datos-agencias h2 {
+  font-size: 15px;
+  color: black;
+}
+
+.formulario-agencia {
+  border: 2px solid rgb(242, 17, 1);
+  background-image: linear-gradient(0deg,
+      rgba(255, 255, 255, 0.801),
+      rgba(255, 255, 255, 0.747)), url(../img/asistentacon.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.formulario-agencia label {
+  color: black;
+}
+
+.formulario-agencia h4 {
+  font-size: 20px;
+  color: white;
+  padding: 13px;
+}
+
+.columnas-agencias {
+  margin: 0px 0px 60px 0px;
+}
+
+@media(max-width:991px) {
+  .columnas-agencias {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/** Boton de compra flotante **/
+.FlootComprar {
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(to bottom, #ff6600, #ff3300);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 35px 0px 0px 0px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgb(0, 0, 0), 0 6px 20px 0 rgb(0, 0, 0);
+}
+
+.FlootComprar:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  animation: ripple-effect 1s linear infinite;
+}
+
+.FlootComprar i {
+  margin-left: 5px;
+}
+
+.FlootComprar:active i {
+  transform: translateY(2px);
+}
+
+@keyframes ripple-effect {
+  0% {
+    opacity: 1;
+    width: 0;
+    height: 0;
+  }
+
+  100% {
+    opacity: 0;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/*formulario flotante*/
+.floating-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 998;
+}
+
+.floating-form-content {
+  max-width: 400px;
+  max-height: 80%;
+  overflow: auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  font-size: 20px;
+  background: red;
+  border: none;
+  color: #000000;
+  cursor: pointer;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #555e66;
+}
+
+.floating-form-content form input {
+  border-radius: 55px;
+  background-color: #ffffff;
+  /* Color de fondo del elemento */
+  box-shadow: inset 0px 0px 5px 5px rgba(194, 194, 194, 0.5);
+  /* Sombras internas */
+}

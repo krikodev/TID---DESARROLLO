@@ -1,0 +1,175 @@
+.modal-header-custom {
+    background-color: #495057;
+}
+
+/* Asiento visual */
+.seat-badge {
+    width: 72px;
+    height: 72px;
+    background: #495057;
+    border-radius: 14px 14px 8px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .25);
+    position: relative;
+}
+
+.seat-badge .seat-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.seat-badge .seat-floor {
+    font-size: 0.65rem;
+    opacity: .8;
+    margin-top: 2px;
+}
+
+.seat-badge::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    width: 50px;
+    height: 10px;
+    background: #495057;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Estado */
+.badge-VENDIDO {
+    background-color: #198754;
+}
+
+.badge-RESERVADO {
+    background-color: #fd7e14;
+}
+
+.badge-VENTA_WEB {
+    background-color: #0d6efd;
+}
+
+.badge-ANULADO {
+    background-color: #dc3545;
+}
+
+/* Secciones */
+.section-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    color: #6c757d;
+    text-transform: uppercase;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 4px;
+    margin-bottom: 10px;
+}
+
+.info-row {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    font-size: 0.855rem;
+}
+
+.info-row .info-icon {
+    width: 20px;
+    color: #868e96;
+    flex-shrink: 0;
+    padding-top: 1px;
+}
+
+.info-row .info-label {
+    color: #6c757d;
+    min-width: 110px;
+    flex-shrink: 0;
+}
+
+.info-row .info-value {
+    font-weight: 500;
+    color: #212529;
+    word-break: break-word;
+}
+
+.divider-v {
+    border-left: 1px solid #dee2e6;
+}
+
+/* Botones */
+.btnAnular {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btnAnular:hover {
+    background-color: #bb2d3b;
+    color: #fff;
+}
+
+.btnCancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.btnCancel:hover {
+    background-color: #565e64;
+    color: #fff;
+}
+
+.btnPostponer {
+    background-color: #fd7e14;
+    color: #fff;
+}
+
+.btnPostponer:hover {
+    background-color: #e06800;
+    color: #fff;
+}
+
+.btnColorViolet {
+    background-color: #6f42c1;
+    color: #fff;
+}
+
+.btnColorViolet:hover {
+    background-color: #5a33a3;
+    color: #fff;
+}
+
+.btnCambiarA {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.btnCambiarA:hover {
+    background-color: #0b5ed7;
+    color: #fff;
+}
+
+.mini-table-egresos {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+
+.mini-table-egresos th {
+    background-color: #f0f0f0;
+    padding: 3px 6px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+}
+
+.mini-table-egresos td {
+    padding: 3px 6px;
+    border-bottom: 1px solid #f0f0f0;
+    white-space: nowrap;
+}
+
+.mini-table-egresos tr:last-child td {
+    border-bottom: none;
+}

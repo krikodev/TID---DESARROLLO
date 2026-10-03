@@ -1,0 +1,46 @@
+/* --------SCROLL----------- */
+.sidebar-nav::-webkit-scrollbar {
+    width: 10px;
+}
+.sidebar-nav::-webkit-scrollbar-track {
+    background-color: #222E3C !important;
+}
+
+.informes::-webkit-scrollbar {
+    width: 0px;
+    height: 10px;
+}
+
+.parent_todolist::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+#super_parent::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f6f6f6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #6f7173;
+}
+
+.et_pb_scroll_top.et-pb-icon {
+    color: white;
+    background: var(--background-style);
+    border-radius: 50px;
+    font-size: 10px;
+}

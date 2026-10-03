@@ -1,0 +1,15 @@
+/* FORMAULARIO */
+.requiredField {
+  color: rgb(240, 61, 97);
+  margin-left: 2px;
+}
+
+.optionalField {
+  color: rgb(32, 29, 175);
+  margin-left: 2px;
+}
+
+label {
+  font-family: var(--fuente);
+  margin-bottom: 1vw;
+}

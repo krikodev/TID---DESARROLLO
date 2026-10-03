@@ -1,0 +1,28 @@
+/* TO DO LIST */
+.todo_list>thead>tr>th {
+    color: #495057 !important;
+}
+
+.table>:not(:first-child) {
+    /*Elimina la linea del bottom del header*/
+    border-top: 0px solid !important;
+}
+
+.todo_list>thead {
+    background-color: #f8f8f8 !important;
+    border-top: 1px solid #ccc !important;
+    border-bottom: 1px solid #ccc !important;
+}
+
+.todo_list th {
+    vertical-align: middle !important;
+}
+
+.todo_list>:not(caption)>*>* {
+    border-bottom-width: 0px !important;
+}
+
+.addItemTodoList {
+    font-size: 12px;
+    padding: auto 0px !important;
+}

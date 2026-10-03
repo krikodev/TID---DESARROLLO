@@ -1,0 +1,215 @@
+body {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Estilos generales */
+.formulario-fondo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    flex-direction: row;
+}
+
+.Solicitainformacion {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    max-width: none;
+}
+
+.h3-solicitainfo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.form-row-top {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+
+.form-row-top .form-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+
+.form-row-contacto {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.form-row-contacto .form-group {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 20px;
+
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-row-direccion {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.form-row-direccion .form-group {
+    flex: 1;
+    min-width: 170px;
+    margin-bottom: 20px;
+
+}
+
+.form-row-reclamo {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-row-reclamo .form-group {
+    flex: 1;
+    min-width: 150px;
+    margin-bottom: 20px;
+
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-row-textarea {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.form-row-textarea .form-group {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+
+.form-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.terminos-container {
+    display: flex;
+    gap: 10px;
+
+    font-size: 14px;
+    order: -1;
+}
+
+.terminos-container input {
+    width: 16px;
+    height: 16px;
+}
+
+.politica_y_terminos {
+    display: flex;
+    gap: 10px;
+
+    font-size: 14px;
+}
+
+.botones-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-enviar {
+    background-color: #ef0b0b;
+    color: white;
+}
+
+.btn-enviar:hover {
+    background-color: #1a0bef;
+}
+
+.btn-volver {
+    background-color: #ccc;
+    color: black;
+}
+
+.btn-volver:hover {
+    background-color: #999;
+}
+
+
+
+.logo-container {
+    position: absolute;
+    top: 40px;
+    left: 100px;
+}
+
+.h3-solicitainfo {
+    font-size: 50px;
+    color: #ffffff;
+    margin: 0;
+    padding: 100px 0;
+    text-align: center;
+    background: linear-gradient(to right, #0c5bed, #0c5bed);
+    border-bottom: 10px solid #0c5bed;
+    width: 100%;
+
+}

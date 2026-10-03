@@ -1,0 +1,97 @@
+.btnColorViolet {
+    background-color: #844ae0 !important;
+    color: #ffff !important;
+    font-family: var(--fuente);
+    font-size: 12px !important;
+}
+
+.overlay-background::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* Puedes ajustar el nivel de opacidad según tus preferencias */
+    z-index: 1050;
+    /* Ajusta según sea necesario, debe ser mayor que el z-index del modal_nota */
+}
+
+#tabla_detalle_pago {
+    width: 100%;
+}
+
+#tabla_detalle_pago td.label {
+    font-weight: bold;
+    background-color: #f5f5f5;
+    width: 40%;
+    padding: 8px;
+}
+
+#tabla_detalle_pago td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+/* Estilos para los filtros */
+.card-header.bg-light {
+    background-color: #f8f9fa !important;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.card-header h6 {
+    font-weight: 600;
+    color: #495057;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #6c757d;
+    margin-bottom: 0.25rem;
+}
+
+.btn-sm i {
+    font-size: 0.9rem;
+}
+
+/* Ajustes para responsive */
+@media (max-width: 768px) {
+    .card-body .row>div {
+        margin-bottom: 0.5rem;
+    }
+
+    .d-flex.gap-2 {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Estilos tabla seleccion */
+/* Reset del estilo por defecto de DataTables Select */
+table.dataTable tbody tr.selected>td,
+table.dataTable tbody tr.selected>th {
+    background-color: #e8f0fe !important;
+    color: var(--bs-body-color) !important;
+    /* evita que el texto se ponga blanco */
+}
+
+/* Acento lateral izquierdo */
+table.dataTable tbody tr.selected>td:first-child {
+    box-shadow: inset 3px 0 0 #42f486 !important;
+}
+
+/* Hover en fila seleccionada */
+table.dataTable tbody tr.selected:hover>td {
+    background-color: #d2e3fc !important;
+}
+
+/* Hover en fila NO seleccionada */
+table.dataTable tbody tr:not(.selected):hover>td {
+    background-color: #f5f7ff !important;
+}
+
+/* Manito en todas las filas */
+table.dataTable tbody tr {
+    cursor: pointer;
+}

@@ -1,0 +1,232 @@
+.conectamos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: "Poppins", sans-serif;
+    background: rgb(10, 107, 197);
+}
+
+/* titulo */
+.title-container {
+    width: 100%;
+    color: white;
+    padding: 60px 20px 320px;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.title-container h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.title-container p.intro {
+    font-style: italic;
+    font-size: 1.3rem;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 300;
+}
+
+/* card containers */
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    max-width: 1300px;
+    margin: -280px auto 0;
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+/* card */
+.card {
+    background: white;
+    width: 360px;
+    padding: 0;
+    box-sizing: border-box;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.card-image-container {
+    width: 100%;
+    height: 240px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(4, 163, 25, 0.1) 100%);
+}
+
+.card-content {
+    padding: 30px 25px 35px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0 0 18px;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #048ba3, #0368c7);
+    border-radius: 2px;
+}
+
+.card p {
+    font-style: italic;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* descripción del container */
+.description-container {
+    width: 100%;
+    background-color: white;
+    padding: 80px 20px 100px;
+    box-sizing: border-box;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: -60px;
+}
+
+/* responsive */
+@media (max-width: 1100px) {
+    .cards-container {
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: -260px;
+    }
+    
+    .card {
+        width: calc(50% - 30px);
+        min-width: 300px;
+    }
+    
+    .title-container h2 {
+        font-size: 2.8rem;
+    }
+    
+    .title-container p.intro {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .conectamos {
+        background: rgb(11, 217, 21);
+    }
+    
+    .title-container {
+        padding: 50px 20px 280px;
+    }
+    
+    .cards-container {
+        flex-direction: column;
+        gap: 25px;
+        margin-top: -240px;
+        align-items: center;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    
+    .title-container h2 {
+        font-size: 2.4rem;
+    }
+    
+    .title-container p.intro {
+        font-size: 1.1rem;
+    }
+    
+    .description-container {
+        padding: 60px 20px 80px;
+        margin-top: -40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-container {
+        padding: 40px 15px 250px;
+    }
+    
+    .title-container h2 {
+        font-size: 2rem;
+    }
+    
+    .title-container p.intro {
+        font-size: 1rem;
+    }
+    
+    .card {
+        max-width: 100%;
+    }
+    
+    .card-content {
+        padding: 25px 20px 30px;
+    }
+    
+    .card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .card p {
+        font-size: 0.95rem;
+    }
+}

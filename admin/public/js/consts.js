@@ -1,0 +1,184 @@
+export const ICONOS = Object.freeze({
+    // iconos de font-Awesome
+    ASIENTO: 'fa-light fa-loveseat',
+    BAÑO: 'fa-light fa-restroom-simple',
+    SCALERA: 'fa-light fa-stairs',
+    TELEVISION: 'bi bi-usb',
+    REFRIGERADORA: 'fa-light fa-refrigerator',
+    TERRAMOZA: 'fa-light fa-person-dress'
+})
+
+export const VEHICULO = Object.freeze({
+    URL_IMG_DELATERA: 'admin/vehiculo/vehiculo_delantero.jpg',
+    URL_IMG_TRASERA: 'admin/vehiculo/vehiculo_trasera.jpg',
+    TAMAÑO_IMG_DELANTERA: { WIDTH: '300px', HEIGHT: '150px' },
+    TAMAÑO_IMG_TRASERA: { WIDTH: '300px', HEIGHT: '40px' },
+})
+
+export const OBJETOS = Object.freeze({
+    TAMANO: '45px',
+    TAMANO_TEXT: '18px',
+    TAMANO_TEXT_MEDIO_PAGO: '8px',
+    TAMANO_TEXT_TERMINAL: '8px',
+})
+
+export const COLORES = Object.freeze({
+    TIPO_ASIENTO: { PREMIUM: '#fca311', NORMAL: '#6a696b' },
+    ESTADO_ASIENTO: { VENDIDO: '#0394fc', RESERVADO: '#912de3', ANULADO: '#fc035e', LIBRE: '#6a696b', POSTPONER: '#2a9d8f', VENTA_WEB: '#f6bd60', PROCESO_WEB: '#4FF08F', SELECCIONADO: '#7c8b8a' },
+    OBJETO_DEFAULT: '#6a696b',
+    ASIENTO_TEXT: { OCUPADO: '#ffff', LIBRE: '#6a696b' },
+    ENVIO_SUNAT: { 1: '#65eb5b', 0: '#fc035e', 2: '#65eb5b', 3: '#e23535', 4: '#0496ff', 5: '#9d4edd' },
+    ENVIO_SUNAT_GUIAS: { 1: '#65eb5b', 0: '#6a696b', 2: '#fc035e', 4: '#ff0909' },
+    ENVIO_SUNAT_MENSAJE: { ACEPTADA: '#65eb5b', RECHAZADA: '#e23535', ANULADA: '#9d4edd', PENDIENTE: '#fca311'},
+    BTN_ANULAR: '#f0973d',
+    BTN_COMPROBANTE: '#844ae0',
+    ESTADO_ENVIO_ENCOMIENDA: { 'EN ORIGEN': '#6d6875', 'EN TRANSITO': '#9b5de5', 'EN DESTINO': '#00b2ca', 'ENTREGADO': '#7ae582', 'CANCELADO': '#ff006e', 'EN RUTA': '#fabf35', 'MAL ENVIADO': '#ff6b35' },
+    ESTADO_VENTA_ENCOMIENDA: { 'PAGADO': '#0496ff', 'PAGO EN DESTINO': '#f77f00', 'ANULADO': '#ff006e', 'PAGO EN BLOQUE': '#9d1df6', 'CREDITO': '#4b5563', 'APROBADO': '#65eb5b' },
+    ROTULADO: { 1: '#035afc', 0: '#fc035e' },
+    TIPO_E: { 0: '#035afc', 1: '#fc035e' },
+    TIPO_ESTABLECIMIENTO: { SUCURSAL: '#118ab2', AGENCIA: '#7209b7', 'OFICINA ADMINISTRATIVA': '#ef476f' },
+    BUTTONS: {
+        XML: '#5b72f1',
+        CDR: '#259450',
+    },
+    TP_PROGRAMACION: { 1: '#1dc8f6', 2: '#9d1df6' },
+    FORMA_PAGO: { 'CONTADO': '#5A63ED', 'CREDITO': '#5ABFED' },
+    ESTADO_VENTA_FONDO: { 'PAGADO': '#C8F3D2 ', 'PENDIENTE': '#F8D047', 'ANULADO': '#E4BFC3', 'PAGO EN DESTINO': '#FFE5B4', 'VENDIDO': '#D6EAF8', 'POSPUESTO': '#f8ab47' },
+    ESTADO_VENTA_TEXT: { 'PAGADO': '#0A7A33', 'PENDIENTE': '#7A5E00', 'ANULADO': '#7A1F2A', 'PAGO EN DESTINO': '#E67E22', 'VENDIDO': '#2E86C1' },
+    ESTADO_COTIZACION: {
+        BORRADOR: { bg: '#F3F4F6', color: '#6B7280', border: '#D1D5DB' },
+        PENDIENTE: { bg: '#FEF3C7', color: '#B45309', border: '#FCD34D' },
+        ACEPTADA: { bg: '#DCFCE7', color: '#15803D', border: '#86EFAC' },
+        RECHAZADA: { bg: '#FEE2E2', color: '#B91C1C', border: '#FCA5A5' },
+        VENCIDA: { bg: '#FFF7ED', color: '#C2410C', border: '#FDBA74' },
+        FACTURADA: { bg: '#DBEAFE', color: '#1D4ED8', border: '#93C5FD' },
+        ANULADA: { bg: '#E5E7EB', color: '#374151', border: '#9CA3AF' }
+    },
+    ESTADO_VALORIZACION: {
+        BORRADOR: { bg: '#F3F4F6', color: '#6B7280', border: '#D1D5DB' },
+        ABIERTA: { bg: '#DBEAFE', color: '#1D4ED8', border: '#93C5FD' },
+        CERRADA: { bg: '#FEF3C7', color: '#B45309', border: '#FCD34D' },
+        FACTURADA: { bg: '#DCFCE7', color: '#15803D', border: '#86EFAC' },
+        ANULADA: { bg: '#FEE2E2', color: '#B91C1C', border: '#FCA5A5' }
+    },
+})
+
+export const BADGES = Object.freeze({
+    ESTADO_COTIZACION: {
+        PENDIENTE: "badge-warning-soft",
+        ACEPTADA: "badge-success-soft",
+        RECHAZADA: "badge-danger-soft",
+        FACTURADA: "badge-success-soft"
+    },
+
+    ESTADO_VALORIZACION: {
+        BORRADOR: "badge-secondary-soft",
+        ABIERTA: "badge-primary-soft",
+        CERRADA: "badge-warning-soft",
+        FACTURADA: "badge-success-soft",
+        ANULADA: "badge-danger-soft"
+    },
+
+    ESTADO_ENCOMIENDA: {
+        REGISTRADO: "badge-info-soft",
+        EMBARQUE: "badge-primary-soft",
+        ENTREGADO: "badge-success-soft",
+        ANULADO: "badge-danger-soft"
+    }
+})
+
+export const TEXTO = Object.freeze({
+    TEXT_ENVIO_SUNAT: { 1: 'ENVIADO A SUNAT', 0: 'SIN ENVIAR', 2: 'ENVIADO POR RESUMEN', 3: 'RECHAZADO', 4: 'ACEPTADO', 5: 'ANULADO' },
+    TEXT_ENVIO_SUNAT_GUIAS: { 1: 'ENVIADO A SUNAT', 0: 'SIN ENVIAR', 2: 'RECHAZADO', 4: 'ANULADO' },
+    POSTPONER: { ASIENTO: 'ventaAsiento_postponer' },
+    WHATSAPP_COMPROBANTE: 'Su comprobante de pago electrónico ha sido generado correctamente, puede revisarlo en el siguiente enlace: $link_comprobante$',
+    ROTULADO: { 1: 'ROTULADO', 0: 'SIN ROTULAR' },
+    TIPO_E: { 1: 'INDIVIDUAL', 0: 'GRUPAL' },
+    TP_PROGRAMACION: { 1: 'PASAJES Y ENCOMIENDAS', 2: 'ENCOMIENDAS' }
+})
+
+export const URL = Object.freeze({
+    ENVIAR_COMPROBANTE_WHATSAPP: "https://wa.me/$number$?text=$message$",
+    IMPRESION_PASAJE: {
+        COMPROBANTE: 'pasaje/impresion/comprobante/',
+        I_COMPROBANTE: 'comprobantes/impresion/comprobante/',
+        NOTA_VENTA: 'pasaje/impresion/nota_venta/',
+        I_NOTA_VENTA: 'comprobantes/impresion/nota_venta/',
+        LIQUIDACION_VEHICULO: 'pasaje/impresion/liquidacion_vehiculo/',
+        LIQUIDACION_PUSUARIO: 'pasaje/impresion/liquidacion_p_usuario/',
+        LIQUIDACION_USUARIO: 'pasaje/impresion/liquidacion_usuario/',
+        LIQUIDACION_TERMINAL: 'pasaje/impresion/liquidacion_terminal/',
+        CONTROL_PASAJERO: 'pasaje/impresion/control_pasajeros/',
+    },
+    IMPRESION_ENCOMIENDA: {
+        COMPROBANTE: 'encomienda/impresion/comprobante/',
+        NOTA_VENTA: 'encomienda/impresion/nota_venta/',
+        TRANSPORTISTA: 'encomienda/impresion/transportista/',
+        ARCHIVO: 'encomienda/impresion/archivo/',
+        GUIA_REMISION: 'encomienda/impresion/guia_remision/',
+        EMBARQUE: 'encomienda/impresion/embarqueH/',
+        EMBARQUE_RUTA: 'encomienda/impresion/embarque_ruta/',
+        DESEMBARQUE: 'encomienda/impresion/desembarqueH/',
+        ROTULADO: 'encomienda/impresion/rotulo/',
+    },
+    IMPRESION_FACTURADOR: {
+        COMPROBANTE: 'facturador/impresion/comprobante/',
+        COMPROBANTE_A4: 'facturador/impresion/comprobante_a4/',
+        NOTA_VENTA: 'facturador/impresion/nota_venta/',
+    },
+    IMPRESION_COTIZACION: {
+        TICKET: 'cotizacion/impresion/cotizacion/',
+        A4: 'cotizacion/impresion/cotizacion_a4/',
+    },
+    IMPRESION_VALORIZACION: {
+        TICKET: 'valorizacion/impresion/valorizacion/',
+        A4: 'valorizacion/impresion/valorizacion_a4/',
+    },
+    IMPRESION_NOTA_VENTA: {
+        COMPROBANTE: 'nota_venta/impresion/comprobante/',
+    },
+    IMPRESION_GUIA_TRANSPORTISTA: {
+        COMPROBANTE: 'guia_transportista/impresion/comprobante/',
+    },
+    MANIFIESTO: {
+        PASAJE: 'pasaje/impresion/manifiesto/',
+        PASAJE_SUNAT: 'pasaje/impresion/manifiesto_sunat/',
+        ENCOMIENDA: 'encomienda/impresion/manifiesto/'
+    },
+    HISTORIAL: { PASAJERO: 'pasajero/impresion/historial/' },
+    REPORTES_ENCOMIENDA: {
+        GENERAL: 'encomienda/impresion/reportes/general/',
+        ORIGEN_DESTINO: 'encomienda/impresion/reportes/origen_destino/',
+        VEHICULO: 'encomienda/impresion/reportes/vehiculo/',
+        CLIENTE: 'encomienda/impresion/reportes/cliente/',
+    },
+    IMPRESION_CAJA_CHICA: {
+        CIERRE: {
+            A4: 'caja_chica/impresion/cierre/',
+            TICKET: 'caja_chica/impresion/cierre_ticket/',
+        },
+        LIQUIDACION_USUARIO: 'caja_chica/impresion/liquidacion_usuario/',
+        LIQUIDACION_TERMINAL: 'caja_chica/impresion/liquidacion_terminal/',
+    },
+    ANULACION: {
+        PASAJE: 'pasaje/anular_venta',
+        ENCOMIENDA: 'encomienda/anularVenta',
+        FACTURADOR: 'facturador/anular_venta',
+    }
+})
+
+export const TIPO_COMPROBANTE_FOR_ID = Object.freeze({
+    1: 'COMPROBANTE',
+    3: 'COMPROBANTE',
+    2: 'NOTA_VENTA',
+})
+
+export const PERMISOS = Object.freeze({
+    P_ENVIAR_RESUMEN: document.querySelector("#p_enviarResumen") ? document.querySelector("#p_enviarResumen").value : '',
+    P_ANULAR_COMPROBANTE: document.querySelector("#p_anularComprobante") ? document.querySelector("#p_anularComprobante").value : '',
+    P_ANULAR_NOTAVENTA: document.querySelector("#p_anularNotaventa") ? document.querySelector("#p_anularNotaventa").value : '',
+    P_POSPONER_PASAJE: document.querySelector("#p_posponerPasaje") ? document.querySelector("#p_posponerPasaje").value : '',
+    P_CAMBIAR_ASIENTO: document.querySelector("#p_cambiarAsiento") ? document.querySelector("#p_cambiarAsiento").value : '',
+    P_CAMBIAR_PRECIO_ASIENTO: document.querySelector("#p_cambiar_precio_asiento") ? document.querySelector("#p_cambiar_precio_asiento").value : '',
+    P_DESBLOQUEAR_RESERVADO: document.querySelector("#p_desbloquear_reservado") ? document.querySelector("#p_desbloquear_reservado").value : '',
+})

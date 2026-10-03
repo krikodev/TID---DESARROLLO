@@ -1,0 +1,236 @@
+/* === Botón Consulta === */
+.boton-consulta {
+  display: inline-block;
+  padding: 10px 25px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0c8fdb;
+  background-color: transparent;
+  border: 2px solid #0c6bc4;
+  border-radius: 30px;
+  text-align: center;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.boton-consulta:hover {
+  background-color: #eeb807;
+  color: #fff;
+}
+.boton-consulta:active {
+  background-color: #fff;
+  color: #c1c1c1;
+  transform: translateY(2px);
+}
+.boton-consulta:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(227, 209, 9, 0.5);
+}
+
+.seguimiento-modal {
+  position: fixed;
+  top: 90px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  max-width: 1190px;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+}
+.seguimiento-oculto {
+  display: none !important;
+}
+.seguimiento-contenedor {
+  width: 100%;
+  max-width: 1190px;
+  margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+.seguimiento-izq {
+  width: 40%;
+  background-color: rgb(246, 218, 11);
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.seguimiento-icono {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+.seguimiento-der {
+  width: 60%;
+  background: #fff;
+  padding: 25px 20px;
+  min-height: 300px;
+  font-size: 14px;
+}
+.seguimiento-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ccc;
+}
+.seguimiento-titulo {
+  font-weight: bold;
+  font-size: 16px;
+  color: #444;
+}
+.seguimiento-cerrar {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.seguimiento-formulario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.seguimiento-formulario input,
+.seguimiento-formulario select {
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1 1 auto;
+}
+.seguimiento-formulario button {
+  background: rgb(229, 218, 19);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px #555;
+  font-size: 14px;
+}
+
+.seguimiento-resultados {
+  background-color: #f8f8f8;
+  padding: 10px;
+  border-radius: 10px;
+}
+.seguimiento-tabla {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: auto; 
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.tabla-contenedor {
+  max-height: 300px;
+  overflow: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  margin-top: 15px;
+}
+
+.tabla-consulta {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; 
+  min-width: 1100px; 
+}
+.tabla-consulta th,
+.tabla-consulta td {
+  white-space: nowrap;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.tabla-consulta thead th {
+  position: sticky;
+  top: 0;
+  background-color: #1338df;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  z-index: 1;
+}
+.tabla-consulta tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.tabla-consulta tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.tabla-contenedor::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+.tabla-contenedor::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+.tabla-contenedor::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.seguimiento-header-top,
+.seguimiento-encabezado-superior {
+  text-align: center;
+  background-color: rgb(23, 90, 235);
+  padding: 15px 10px 8px 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.seguimiento-encabezado-superior {
+  border-bottom: 2px solid #6d6c6c;
+}
+.seguimiento-img-superior {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+/* Cambio de color del encabezado del titulo del modal */
+.seguimiento-titulo-superior {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+}
+.seguimiento-titulo-superior span {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  #formulario-documento {
+    flex-direction: column;
+  }
+  #formulario-documento > div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #formulario-documento label,
+  #seguimiento-tipo-documento,
+  #campo-documento-seguimiento label,
+  #campo-documento-seguimiento input,
+  #formulario-documento button {
+    width: 100%;
+  }
+}
+#formulario-documento > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+#campo-documento-seguimiento {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+

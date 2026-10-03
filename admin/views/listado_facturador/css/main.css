@@ -1,0 +1,510 @@
+/* Estilos generales para listado_facturador */
+
+/* Botones de acción */
+.btn-action-group {
+    display: flex;
+    gap: 3px;
+    flex-wrap: nowrap;
+}
+
+.btn-action-group .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+}
+
+/* Badges personalizados */
+.badge-estado {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.badge-pagado {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge-anulado {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.badge-pendiente {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge-sunat-success {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge-sunat-error {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.badge-sunat-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge-sunat-info {
+    background-color: #0dcaf0 !important;
+    color: white !important;
+}
+
+/* Estilos para la tabla */
+#table_listado_facturador th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 0.875rem;
+    vertical-align: middle;
+}
+
+#table_listado_facturador td {
+    font-size: 0.875rem;
+    vertical-align: middle;
+}
+
+#table_listado_facturador tfoot th {
+    background-color: #e9ecef;
+    font-weight: 600;
+}
+
+/* Estilos para filtros */
+.filtro-container {
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+}
+
+.filtro-container label {
+    font-weight: 500;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+/* Estilos para los modales */
+.modal-detalle-header {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    color: white;
+}
+
+.modal-anular-header {
+    background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+    color: white;
+}
+
+.modal-sunat-header {
+    background: linear-gradient(135deg, #20c997 0%, #198754 100%);
+    color: white;
+}
+
+.modal-productos-header {
+    background: linear-gradient(135deg, #6f42c1 0%, #844ae0 100%);
+    color: white;
+}
+
+/* Tabla de detalle en modal */
+#tableDetalleProductos th {
+    background-color: #6f42c1;
+    color: white;
+    font-weight: 600;
+}
+
+#tableDetalleProductos td {
+    vertical-align: middle;
+}
+
+#tableDetalleProductos .table-primary {
+    background-color: rgba(111, 66, 193, 0.1) !important;
+}
+
+/* Overlay para modales anidados */
+.overlay-background::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1050;
+}
+
+/* Estilos para tooltips */
+[title] {
+    cursor: help;
+}
+
+/* Estilos responsive */
+@media (max-width: 768px) {
+    .btn-action-group {
+        flex-direction: column;
+        gap: 2px;
+    }
+    
+    .btn-action-group .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .filtro-container .row {
+        margin-bottom: 0.5rem;
+    }
+    
+    .filtro-container .col-md-3 {
+        margin-bottom: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    #table_listado_facturador {
+        font-size: 0.75rem;
+    }
+    
+    #table_listado_facturador th,
+    #table_listado_facturador td {
+        padding: 0.5rem;
+    }
+    
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Estilos para el loader personalizado */
+#loader-listado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner-listado {
+    width: 3rem;
+    height: 3rem;
+    border: 0.25rem solid #f3f3f3;
+    border-top: 0.25rem solid #844ae0;
+    border-radius: 50%;
+    animation: spin-listado 1s linear infinite;
+}
+
+@keyframes spin-listado {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos para input de búsqueda */
+#inputBusquedaGlobal:focus {
+    border-color: #844ae0;
+    box-shadow: 0 0 0 0.25rem rgba(132, 74, 224, 0.25);
+}
+
+/* Estilos para botones de filtro */
+#btnAplicarFiltros {
+    background-color: #844ae0;
+    border-color: #844ae0;
+}
+
+#btnAplicarFiltros:hover {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+#btnLimpiarFiltros {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+#btnLimpiarFiltros:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+/* Estilos para el contenido del modal de detalle */
+#detalleComprobanteContent table {
+    margin-bottom: 1rem;
+}
+
+#detalleComprobanteContent table td:first-child {
+    width: 40%;
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los totales en la tabla */
+.totales-row {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+.totales-row td {
+    border-top: 2px solid #dee2e6 !important;
+}
+
+/* Estilos para el QR en modal */
+.qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 0.375rem;
+    border: 1px solid #dee2e6;
+}
+
+.qr-container img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Estilos para mensajes de estado */
+.estado-mensaje {
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+.estado-mensaje.success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+.estado-mensaje.error {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+}
+
+.estado-mensaje.warning {
+    background-color: #fff3cd;
+    color: #664d03;
+    border: 1px solid #ffecb5;
+}
+
+/* Estilos para el contenedor principal */
+.card-listado-facturador {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-listado-facturador .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 1rem 1.25rem;
+}
+
+/* Estilos para los badges de detracción */
+.badge-detraccion-si {
+    background-color: #0dcaf0 !important;
+    color: white !important;
+}
+
+.badge-detraccion-no {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+/* Estilos para hover en filas de tabla */
+#table_listado_facturador tbody tr:hover {
+    background-color: rgba(132, 74, 224, 0.05);
+    cursor: pointer;
+}
+
+/* Estilos para selección de filas */
+#table_listado_facturador tbody tr.selected {
+    background-color: rgba(132, 74, 224, 0.1) !important;
+}
+
+/* Estilos para el contenedor de acciones masivas (si lo implementas en el futuro) */
+.acciones-masivas {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.375rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para el scroll personalizado */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #868686;
+}
+
+/* Estilos para tooltips personalizados */
+.tooltip-listado {
+    font-size: 0.75rem;
+}
+
+/* Estilos para menú desplegable de acciones */
+.dropdown-acciones {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu-acciones {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 180px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.dropdown-menu-acciones.show {
+    display: block;
+}
+
+.dropdown-item-accion {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+}
+
+.dropdown-item-accion:hover {
+    background-color: #f5f5f5;
+}
+
+.dropdown-item-accion.disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.dropdown-item-accion.disabled:hover {
+    background-color: transparent;
+}
+
+.btn-tres-puntos {
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.btn-tres-puntos:hover {
+    background-color: #f5f5f5;
+}
+
+/* En tu main.css o en un style tag */
+.dropdown-item-accion[data-action="imprimir_a4"] {
+    color: #e74c3c; /* Rojo para PDF */
+    border-bottom: 1px solid #eee; /* Separador visual */
+    margin-bottom: 2px;
+    padding-bottom: 5px;
+}
+
+.dropdown-item-accion[data-action="imprimir_a4"]:hover {
+    background-color: #f8f9fa;
+    color: #c0392b;
+}
+
+.dropdown-item-accion[data-action="imprimir_a4"] i {
+    color: #e74c3c;
+}
+
+/* ================================================ */
+/* VERSIÓN EXTRA COMPACTA PARA DATATABLE */
+/* ================================================ */
+
+/* Tamaño general ultra compacto */
+#table_listado_facturador {
+    font-size: 0.75rem !important; /* Aún más pequeño */
+    line-height: 1.1 !important;
+}
+
+/* Encabezados ultra compactos */
+#table_listado_facturador th {
+    font-size: 0.72rem !important;
+    padding: 0.3rem 0.4rem !important;
+    font-weight: 600;
+    text-transform: none !important;
+    letter-spacing: 0.3px;
+}
+
+.dataTable thead th,
+#table_listado_facturador thead th,
+table.dataTable thead th {
+    text-transform: none !important;
+    font-size: 0.72rem !important;
+}
+
+/* Celdas de datos ultra compactas */
+#table_listado_facturador td {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.4rem !important;
+    line-height: 1.1;
+    vertical-align: middle;
+}
+
+/* Columnas numéricas - aún más compactas */
+#table_listado_facturador td:nth-child(7),  /* Op. Gravada */
+#table_listado_facturador td:nth-child(8),  /* Op. Exonerada */
+#table_listado_facturador td:nth-child(9),  /* Op. Inafecta */
+#table_listado_facturador td:nth-child(10), /* IGV */
+#table_listado_facturador td:nth-child(11), /* ICBPER */
+#table_listado_facturador td:nth-child(12) { /* Total */
+    font-size: 0.75rem !important;/* Monospace para números */
+    font-weight: 500;
+}
+
+/* Badges super compactos */
+#table_listado_facturador .badge {
+    font-size: 0.65rem !important;
+    padding: 0.15rem 0.3rem !important;
+    font-weight: 600;
+    line-height: 0.9;
+}
+
+/* Dropdown de acciones ultra compacto */
+.dropdown-menu-acciones {
+    min-width: 140px !important;
+    font-size: 0.73rem !important;
+    padding: 0.2rem 0 !important;
+}
+
+.dropdown-item-accion {
+    padding: 0.3rem 0.6rem !important;
+    font-size: 0.73rem !important;
+}
+
+.dropdown-item-accion i {
+    font-size: 0.75rem !important;
+    width: 16px;
+}

@@ -1,0 +1,150 @@
+.permission-group {
+
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+
+    transition: .2s;
+
+    margin-bottom: 12px;
+
+}
+
+.permission-group:hover {
+
+    border-color: #d7dce1;
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .05);
+
+}
+
+.permission-group-header {
+
+    padding: 10px 14px;
+
+    background: #f8f9fb;
+
+    border-bottom: 1px solid #ececec;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+.permission-group-header i {
+
+    width: 18px;
+
+    font-size: 14px;
+
+    margin-right: 8px;
+
+}
+
+.permission-group-body {
+
+    padding: 10px;
+
+}
+
+.permission-check {
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 7px 12px;
+
+    border-radius: 8px;
+
+    transition: .2s;
+
+}
+
+.permission-check:hover {
+
+    background: #f5f9ff;
+
+}
+
+.permission-check .form-check-input {
+
+    margin-top: 0;
+
+    margin-right: 10px;
+
+    margin-left: 2px;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
+
+}
+
+.permission-check label {
+
+    margin: 0;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    flex: 1;
+
+}
+
+.permission-check:hover label {
+
+    color: #0d6efd;
+
+}
+
+.permission-group-body .row {
+
+    --bs-gutter-x: .8rem;
+
+    --bs-gutter-y: .15rem;
+
+}
+
+.card {
+
+    border-radius: 14px;
+
+}
+
+.card-header {
+
+    border-radius: 14px 14px 0 0 !important;
+
+}
+
+.permission-group-header i {
+
+    width: 24px;
+
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eafaf2;
+
+    color: #19b56b;
+
+    font-size: 12px;
+
+    margin-right: 10px;
+
+}

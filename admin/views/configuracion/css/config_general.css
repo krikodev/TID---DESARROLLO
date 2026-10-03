@@ -1,0 +1,15 @@
+/* table */
+table.dataTable tbody>tr {
+    cursor: pointer !important;
+}
+
+table.dataTable tbody>tr.selected,
+table.dataTable tbody>tr>.selected {
+    background-color: transparent !important;
+    color: #495057 !important;
+    color: unset !important;
+}
+
+#table_sucursal.datatable tbody>tr {
+    cursor: auto !important;
+}

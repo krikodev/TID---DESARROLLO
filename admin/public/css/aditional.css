@@ -1,0 +1,292 @@
+@import url('./../fonts/Montserrat/Montserrat.css');
+@import url('./module/config.min.css');
+@import url('./module/buttons.min.css');
+@import url('./module/datatable.min.css');
+@import url('./module/formulario.min.css');
+@import url('./module/select2.min.css');
+@import url('./module/sweet_alert.min.css');
+@import url('./module/sidebar.min.css');
+@import url('./module/scroll.min.css');
+@import url('./module/todolist.min.css');
+@import url('./module/modal.min.css');
+@import url('./module/card.min.css');
+@import url('./module/imprimir.min.css');
+
+:root {
+  --colorText: #5E5873;
+  /* Button */
+  --bgButtonSave: #506ee6;
+  --bgButtonCancel: rgb(240, 61, 97);
+  --bgButtonSearch: #506ee6;
+  --bgSipennerLoad: #506ee6;
+  --fuente: 'Montserrat', sans-serif;
+}
+
+
+/* ICONO */
+.icono {
+  color: var(--colorText)
+}
+
+/* ESTILOS PARA EL ALERT (INFORMACIÓN) */
+.alert {
+  font-family: var(--fuente);
+  font-size: 13px;
+}
+
+.dt-button {
+  padding: 0 !important;
+  border: none !important;
+  background-color: white !important;
+}
+
+/* ESTILOS DEL LOADER */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  pointer-events: all;
+  backdrop-filter: blur(2px);
+}
+
+.pl,
+.pl__worm {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.pl {
+  animation-name: bump9;
+  animation-timing-function: linear;
+  width: 8em;
+  height: 8em;
+}
+
+.pl__ring {
+  stroke: hsla(var(--hue), 10%, 10%, 0.1);
+  transition: stroke 0.3s;
+}
+
+.pl__worm {
+  animation-name: worm9;
+  animation-timing-function: cubic-bezier(0.42, 0.17, 0.75, 0.83);
+}
+
+@keyframes bump9 {
+
+  from,
+  42%,
+  46%,
+  51%,
+  55%,
+  59%,
+  63%,
+  67%,
+  71%,
+  74%,
+  78%,
+  81%,
+  85%,
+  88%,
+  92%,
+  to {
+    transform: translate(0, 0);
+  }
+
+  44% {
+    transform: translate(1.33%, 6.75%);
+  }
+
+  53% {
+    transform: translate(-16.67%, -0.54%);
+  }
+
+  61% {
+    transform: translate(3.66%, -2.46%);
+  }
+
+  69% {
+    transform: translate(-0.59%, 15.27%);
+  }
+
+  76% {
+    transform: translate(-1.92%, -4.68%);
+  }
+
+  83% {
+    transform: translate(9.38%, 0.96%);
+  }
+
+  90% {
+    transform: translate(-4.55%, 1.98%);
+  }
+}
+
+@keyframes worm9 {
+  from {
+    stroke-dashoffset: 10;
+  }
+
+  25% {
+    stroke-dashoffset: 295;
+  }
+
+  to {
+    stroke-dashoffset: 1165;
+  }
+}
+
+.nox-autocomplete-input {
+  cursor: pointer;
+}
+
+.nox-autocomplete-input:focus {
+  cursor: text;
+}
+
+.nox-autocomplete {
+  box-sizing: border-box;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 260px;
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: .375rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .15);
+  margin-top: 4px;
+  z-index: 99999;
+}
+
+.nox-autocomplete-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+.nox-autocomplete-item.active {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.nox-autocomplete-item strong {
+  color: #0d6efd;
+  font-weight: 600;
+}
+
+.nox-autocomplete-item.active strong {
+  color: inherit;
+}
+
+.nox-autocomplete-loading,
+.nox-autocomplete-empty {
+  padding: 10px;
+  text-align: center;
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ccc;
+  border-top-color: #0d6efd;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin-right: 6px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.badge-soft {
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+/* Gris */
+.badge-secondary-soft {
+  background: #EEF1F4;
+  color: #5C6770;
+  border-color: #D5DBE2;
+}
+
+/* Azul */
+.badge-primary-soft {
+  background: #E8F2FF;
+  color: #0D6EFD;
+  border-color: #B8D6FF;
+}
+
+/* Verde */
+.badge-success-soft {
+  background: #DCFCE7;
+  color: #15803D;
+  border-color: #86EFAC;
+}
+
+/* Amarillo */
+.badge-warning-soft {
+  background: #FFF8DD;
+  color: #B78103;
+  border-color: #FFE69C;
+}
+
+/* Rojo */
+.badge-danger-soft {
+  background: #FDECEC;
+  color: #DC3545;
+  border-color: #F5B5BC;
+}
+
+/* Celeste */
+.badge-info-soft {
+  background: #E7F9FC;
+  color: #0891B2;
+  border-color: #B8EDF7;
+}
+
+/* Morado */
+.badge-purple-soft {
+  background: #F2EBFF;
+  color: #7C3AED;
+  border-color: #D8C3FF;
+}
+
+/* Naranja */
+.badge-orange-soft {
+  background: #FFF0E5;
+  color: #EA580C;
+  border-color: #FFD1B0;
+}
+
+.btnS,
+.btnS:hover {
+  background-color: #36e28c !important;
+  color: #ffff !important;
+  border: 1px solid #fff;
+  transition: .3s ease all;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.input-group .btnS {
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}

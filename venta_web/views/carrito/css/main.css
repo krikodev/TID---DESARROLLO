@@ -1,0 +1,3216 @@
+/* Variables CSS para fácil personalización */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+
+    --color-primario: #2563eb;
+    --color-secundario: #1e40af;
+
+    --color-principal: #ffc107;
+
+    --color-fondo: #f8fafc;
+
+    --color-texto: #1e293b;
+    --color-texto-claro: #64748b;
+
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --text-muted: #868e96;
+
+    --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --sombra-media: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    --bg-light: #f8f9fa;
+    --bg-white: #ffffff;
+    --border-color: #dee2e6;
+
+    --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-base: 14px;
+    --font-size-sm: 12px;
+    --font-size-lg: 16px;
+
+    --border-radius: 12px;
+    --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+    --transition2: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset y estilos base */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header con progreso */
+.progress-header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 20px 0;
+}
+
+.progress-steps-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 10px;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%;
+    position: relative;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    /* Permite que el texto se ajuste */
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.step.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step.completed {
+    color: var(--success-color);
+}
+
+.step-number {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--bg-light);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.step.active .step-number {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.step.completed .step-number {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.step-text {
+    font-size: var(--font-size-sm);
+    line-height: 1.2;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Conectores entre pasos */
+.step-connector {
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    margin: 0 10px;
+    margin-top: -15px;
+    /* Alinear con los números */
+    max-width: 50px;
+}
+
+/* Media Queries para Responsividad */
+
+/* Tablets */
+@media (max-width: 768px) {
+    .progress-header {
+        padding: 15px 0;
+    }
+
+    .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .step-text {
+        font-size: 0.75rem;
+    }
+
+    .step-connector {
+        max-width: 30px;
+        margin: 0 8px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 576px) {
+    .progress-header {
+        padding: 12px 0;
+    }
+
+    .progress-steps-wrapper {
+        padding: 0 5px;
+    }
+
+    .progress-steps {
+        gap: 0;
+    }
+
+    .step {
+        flex: 1;
+        min-width: 60px;
+        /* Ancho mínimo para evitar colapso */
+    }
+
+    .step-number {
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
+        margin-bottom: 6px;
+    }
+
+    .step-text {
+        font-size: 0.65rem;
+        line-height: 1.1;
+        max-width: 100%;
+        overflow-wrap: break-word;
+    }
+
+    .step-connector {
+        max-width: 20px;
+        margin: 0 4px;
+        margin-top: -12px;
+    }
+}
+
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+    .step-number {
+        width: 22px;
+        height: 22px;
+        font-size: 0.65rem;
+    }
+
+    .step-text {
+        font-size: 0.6rem;
+    }
+
+    .step-connector {
+        max-width: 15px;
+        margin: 0 2px;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .progress-header {
+        padding: 8px 0 !important;
+    }
+
+    .step-number {
+        width: 20px;
+        height: 20px;
+        font-size: 0.6rem;
+        margin-bottom: 4px;
+    }
+
+    .step-text {
+        font-size: 0.55rem;
+    }
+}
+
+/* Alternativa: Layout vertical para móviles muy pequeños */
+@media (max-width: 320px) {
+    .progress-steps {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .step {
+        flex-direction: row;
+        justify-content: flex-start;
+        text-align: left;
+        width: 100%;
+    }
+
+    .step-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .step-number {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .step-text {
+        font-size: 0.75rem;
+        text-align: left;
+    }
+
+    .step-connector {
+        display: none;
+    }
+}
+
+/* Fin de steps */
+
+/* Sección de búsqueda */
+.search-section {
+    background: var(--bg-white);
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-section.compact {
+    padding: 15px 0;
+}
+
+.search-form {
+    background: var(--bg-white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.btn-search {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.btn-search:hover {
+    background: #0056b3;
+    color: white;
+}
+
+/* Timer */
+.timer-section {
+    background: var(--warning-color);
+    padding: 10px 0;
+    text-align: center;
+}
+
+.timer-alert {
+    color: #856404;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+}
+
+.timer-alert.urgent {
+    background: var(--danger-color);
+    color: white;
+}
+
+.timer-alert i {
+    margin-right: 8px;
+}
+
+/* Sección de resultados */
+.results-section {
+    padding: 30px 0;
+}
+
+.trip-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 15px;
+    transition: var(--transition);
+}
+
+.trip-card:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.time-info {
+    text-align: center;
+}
+
+.departure-time,
+.arrival-time {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.departure-location,
+.arrival-location {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.route-info {
+    text-align: center;
+    position: relative;
+}
+
+.route-type {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.duration {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.route-line {
+    height: 2px;
+    background: var(--border-color);
+    margin: 10px 0;
+    position: relative;
+}
+
+.route-line::before,
+.route-line::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    top: -3px;
+}
+
+.route-line::before {
+    left: 0;
+}
+
+.route-line::after {
+    right: 0;
+}
+
+.service-info {
+    text-align: center;
+}
+
+.service-badge {
+    background: var(--success-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.service-badge.cheapest {
+    background: var(--success-color);
+}
+
+.service-type {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.service-angle {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.price-info {
+    text-align: center;
+}
+
+.price-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 5px;
+}
+
+.action-buttons {
+    text-align: center;
+}
+
+.action-buttons {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.action-buttons .btn-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+}
+
+.action-buttons .btn-primary {
+    background: var(--primary-color);
+    border: none;
+    font-weight: 600;
+}
+
+/* Información del viaje seleccionado */
+.selected-trip-info {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Selección de asientos */
+.seat-selection {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.seat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.floor-tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-floor {
+    background: var(--bg-light);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    transition: var(--transition);
+}
+
+.btn-floor.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.btn-close-seats {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-size-sm);
+}
+
+.seat-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+.seat-icon.available {
+    background: var(--bg-white);
+}
+
+.seat-icon.occupied {
+    background: var(--text-muted);
+}
+
+.seat-icon.selected {
+    background: var(--success-color);
+}
+
+.bus-layout {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.bus-front {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+.seats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.seat {
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: var(--bg-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.seat:hover {
+    border-color: var(--primary-color);
+}
+
+.seat.occupied {
+    background: var(--text-muted);
+    color: white;
+    cursor: not-allowed;
+}
+
+.seat.selected {
+    background: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.seat-selection-info {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.seat-message {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.price-summary {
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.total-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-top: 5px;
+}
+
+.btn-continue {
+    background: var(--success-color);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-continue:hover {
+    background: #218838;
+    color: white;
+}
+
+/* Formulario de pasajero */
+.passenger-form {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.form-actions .btn {
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+}
+
+.form-actions .btn-secondary {
+    background: var(--secondary-color);
+    border: none;
+    color: white;
+}
+
+.form-actions .btn-primary {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+}
+
+/* Resumen de compra */
+.purchase-summary {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+.purchase-summary h5,
+.purchase-summary h6 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.trip-summary,
+.seats-summary {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.selected-seats {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.seat-item {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.total-summary {
+    text-align: center;
+}
+
+.total-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+}
+
+.total-price .price {
+    color: var(--success-color);
+}
+
+/* Formulario de pago */
+.payment-form {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.payer-info {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.payment-methods h5 {
+    margin-bottom: 20px;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.payment-option {
+    position: relative;
+}
+
+.payment-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.payment-label {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--bg-white);
+}
+
+.payment-label:hover {
+    border-color: var(--primary-color);
+}
+
+.payment-option input[type="radio"]:checked+.payment-label {
+    border-color: var(--primary-color);
+    background: rgba(0, 123, 255, 0.05);
+}
+
+.payment-label i {
+    font-size: 20px;
+    color: var(--primary-color);
+}
+
+.card-form {
+    padding: 20px;
+    background: var(--bg-light);
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
+.mobile-payment-info {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Resumen final */
+.final-summary {
+    background: var(--bg-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    position: sticky;
+    top: 20px;
+}
+
+.trip-info {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.passenger-info {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.passenger-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.passenger-name {
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.total-payment {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.total-label {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.total-amount {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--success-color);
+    margin-top: 5px;
+}
+
+.btn-finalize {
+    width: 100%;
+    background: var(--success-color);
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.btn-finalize:hover {
+    background: #218838;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .step-text {
+        display: none;
+    }
+
+    .search-form {
+        padding: 15px;
+    }
+
+    .trip-card .row>div {
+        margin-bottom: 15px;
+    }
+
+    .seat-legend {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .payment-options {
+        gap: 10px;
+    }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.trip-card,
+.seat-selection,
+.passenger-form,
+.payment-form {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Estados de hover y focus mejorados */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Mejoras de accesibilidad */
+.btn:focus-visible,
+.seat:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Estilos para impresión */
+@media print {
+
+    .progress-header,
+    .search-section,
+    .timer-section {
+        display: none;
+    }
+
+    .container {
+        max-width: none;
+    }
+}
+
+/* ===== MEJORAS RESPONSIVAS ===== */
+
+/* Breakpoints personalizados */
+@media (max-width: 575.98px) {
+    /* Extra small devices (phones) */
+
+    .step-text {
+        display: none;
+    }
+
+    .step-number {
+        width: 25px;
+        height: 25px;
+        font-size: 11px;
+    }
+
+    .search-form {
+        padding: 15px 10px;
+        margin: 0 10px;
+    }
+
+    .timer-alert {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .trip-card {
+        padding: 15px 10px;
+        margin: 0 10px 15px;
+    }
+
+    .departure-time,
+    .arrival-time {
+        font-size: 16px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    .service-badge {
+        font-size: 9px;
+        padding: 3px 6px;
+    }
+
+    .btn-search {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .action-buttons .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Small devices (landscape phones) */
+
+    .container-fluid {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .results-section {
+        padding: 20px 0;
+    }
+
+    .results-section h4 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding: 0 10px;
+    }
+
+    /* Selección de asientos en móvil */
+    .seat-selection {
+        padding: 15px;
+    }
+
+    .seat-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .floor-tabs {
+        justify-content: center;
+    }
+
+    .btn-floor {
+        flex: 1;
+        max-width: 120px;
+    }
+
+    .seat-legend {
+        gap: 20px;
+        margin-bottom: 25px;
+    }
+
+    .legend-item {
+        font-size: 12px;
+    }
+
+    .seats-grid {
+        gap: 8px;
+        max-width: 180px;
+    }
+
+    .seat {
+        width: 30px;
+        height: 30px;
+        font-size: 11px;
+    }
+
+    .selected-trip-info {
+        margin-bottom: 15px;
+    }
+
+    .trip-details .row {
+        text-align: center;
+    }
+
+    /* Formularios en móvil */
+    .passenger-form,
+    .payment-form {
+        padding: 20px 15px;
+    }
+
+    .form-actions {
+        margin-top: 25px;
+        padding-top: 15px;
+    }
+
+    .payment-label {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .payment-label i {
+        font-size: 18px;
+    }
+
+    /* Resúmenes en móvil */
+    .purchase-summary,
+    .final-summary {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .purchase-summary h5,
+    .final-summary h5 {
+        font-size: 16px;
+    }
+
+    .total-amount {
+        font-size: 20px;
+    }
+
+    .btn-finalize {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    /* Medium devices (tablets) */
+
+    .search-form {
+        padding: 20px;
+    }
+
+    .trip-card {
+        padding: 20px 15px;
+    }
+
+    .seats-grid {
+        max-width: 220px;
+    }
+
+    .seat {
+        width: 32px;
+        height: 32px;
+    }
+
+    .passenger-form,
+    .payment-form {
+        padding: 25px 20px;
+    }
+}
+
+@media (min-width: 992px) {
+    /* Large devices (desktops) */
+
+    .purchase-summary,
+    .final-summary {
+        position: sticky;
+        top: 20px;
+    }
+
+    .selected-trip-info {
+        position: sticky;
+        top: 20px;
+    }
+}
+
+/* Mejoras para touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .seat {
+        width: 40px;
+        height: 40px;
+        font-size: 13px;
+    }
+
+    .btn {
+        min-height: 44px;
+    }
+
+    .form-control,
+    .form-select {
+        min-height: 44px;
+    }
+
+    .payment-label {
+        min-height: 50px;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+
+    .search-section {
+        padding: 15px 0;
+    }
+
+    .timer-section {
+        padding: 5px 0;
+    }
+
+    .seat-selection {
+        padding: 15px;
+    }
+
+    .bus-layout {
+        transform: scale(0.9);
+    }
+}
+
+/* Mejoras de accesibilidad para móviles */
+@media (max-width: 767.98px) {
+
+    .btn:focus,
+    .form-control:focus,
+    .form-select:focus {
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    }
+
+    .seat:focus {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+}
+
+/* Animaciones optimizadas para móviles */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark mode support (opcional) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-light: #1a1a1a;
+        --bg-white: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --border-color: #404040;
+    }
+}
+
+/* Print styles mejorados */
+@media print {
+
+    .progress-header,
+    .search-section,
+    .timer-section,
+    .action-buttons {
+        display: none !important;
+    }
+
+    .container-fluid {
+        max-width: none;
+        padding: 0;
+    }
+
+    .trip-card,
+    .purchase-summary,
+    .final-summary {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+/* Utilidades responsivas adicionales */
+.mobile-only {
+    display: block;
+}
+
+.desktop-only {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: block;
+    }
+}
+
+/* Mejoras para el timer en móviles */
+@media (max-width: 575.98px) {
+    .timer-alert {
+        position: sticky;
+        top: 0;
+        z-index: 1020;
+        border-radius: 0;
+    }
+}
+
+/* Espaciado mejorado para móviles */
+.mobile-spacing {
+    padding: 10px;
+}
+
+@media (min-width: 768px) {
+    .mobile-spacing {
+        padding: 20px;
+    }
+}
+
+/* Botones flotantes para móviles */
+@media (max-width: 767.98px) {
+
+    .btn-continue,
+    .btn-finalize {
+        position: sticky;
+        bottom: 10px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .seat-selection-info {
+        padding-bottom: 70px;
+    }
+
+    .form-actions {
+        padding-bottom: 70px;
+    }
+}
+
+
+/* ESTILOS ADICIONALES PARA MEJORAR EL COMPORTAMIENTO STICKY */
+
+/* Estilos base mejorados */
+.floating-search-wrapper {
+    position: static;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 5px 0;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* Cuando se vuelve sticky - se expande de canto a canto */
+.floating-search-wrapper.sticky {
+    position: fixed !important;
+    top: 82px !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    z-index: 1000 !important;
+
+    padding: 5px 0 !important;
+
+    background: #ffffff !important;
+
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* El contenedor interno mantiene la posición centrada */
+.floating-search-wrapper.sticky .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    /* Mantiene el padding para centrar el contenido */
+}
+
+/* Estilos para el contenedor de búsqueda */
+.search-container {
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 25px 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Cuando está sticky, reducir el padding del contenedor */
+.floating-search-wrapper.sticky .search-container {
+    border-radius: 25px;
+    /* Mantiene el border-radius original */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    /* Sombra ligeramente más intensa */
+    padding: 15px 30px;
+    /* Reducido de 25px a 15px en vertical */
+    margin: 0;
+}
+
+/* Placeholder para evitar saltos cuando se hace sticky */
+.search-placeholder {
+    height: 0;
+    transition: height 0.3s ease;
+    width: 100%;
+}
+
+.search-placeholder.active {
+    height: 100px;
+    /* Ajusta según la altura de tu buscador */
+}
+
+/* Sin efectos adicionales en inputs y botones */
+
+/* Responsive - NO sticky en móviles */
+@media (max-width: 768px) {
+    .floating-search-wrapper.sticky {
+        position: static !important;
+        /* Desactiva sticky en móviles */
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 10px 15px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        z-index: 1 !important;
+    }
+
+    .floating-search-wrapper.sticky .container-fluid {
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .search-placeholder.active {
+        height: 0px !important;
+        /* No placeholder en móviles */
+    }
+}
+
+/* Animación de aparición suave - solo en desktop */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (min-width: 769px) {
+    .floating-search-wrapper.sticky {
+        animation: slideInFromTop 0.3s ease-out;
+    }
+}
+
+/* Sombra sutil para el modo sticky - solo en desktop */
+@media (min-width: 769px) {
+    .floating-search-wrapper.sticky::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), transparent);
+        pointer-events: none;
+    }
+}
+
+/* =========================================================
+   MODAL - TÉRMINOS Y CONDICIONES
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-dialog {
+    max-width: 1100px;
+    width: 95%;
+    margin: 1rem auto;
+}
+
+#modalTerminosCondiciones .modal-content {
+    height: 90vh;
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-shrink: 0;
+
+    padding: 15px 20px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+#modalTerminosCondiciones .modal-title {
+    margin: 0;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #043b75;
+}
+
+
+/* =========================================================
+   BOTÓN X
+   ========================================================= */
+
+#modalTerminosCondiciones .btn-close {
+    width: 36px;
+    height: 36px;
+
+    margin: 0;
+    padding: 0;
+
+    border-radius: 50%;
+
+    background-color: #f1f3f5;
+
+    opacity: 1;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#modalTerminosCondiciones .btn-close:hover {
+    background-color: #e2e6ea;
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   CUERPO DEL MODAL
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-body {
+    padding: 0;
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    background: #f1f1f1;
+}
+
+
+/* =========================================================
+   VISOR PDF
+   ========================================================= */
+
+#iframeTerminosCondiciones {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+
+    background: #ffffff;
+}
+
+#modalTerminosCondiciones {
+    z-index: 10000 !important;
+}
+
+#modalTerminosCondiciones .modal-dialog {
+    z-index: 10001;
+}
+
+.modal-backdrop {
+    z-index: 9998 !important;
+}
+
+/* =========================================================
+   HEADER DEL MODAL - TÉRMINOS Y CONDICIONES
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-terminos-header {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    min-height: 70px;
+
+    padding: 10px 20px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e9ecef;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-terminos-logo {
+    display: flex;
+    align-items: center;
+
+    width: 180px;
+}
+
+#modalTerminosCondiciones .modal-terminos-logo img {
+    display: block;
+
+    max-width: 140px;
+    max-height: 45px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   TÍTULO CENTRADO
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-terminos-header .modal-title {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #043b75;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+   ========================================================= */
+
+#modalTerminosCondiciones .modal-terminos-header .btn-close {
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    background-color: #f1f3f5;
+
+    opacity: 1;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#modalTerminosCondiciones .modal-terminos-header .btn-close:hover {
+    background-color: #e2e6ea;
+
+    transform: rotate(90deg);
+}
+
+/* =========================================================
+   TABLET / MÓVIL
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    #modalTerminosCondiciones .modal-dialog {
+        width: 96%;
+        max-width: none;
+
+        margin: 0.5rem auto;
+    }
+
+    #modalTerminosCondiciones .modal-content {
+        height: 95vh;
+
+        border-radius: 12px;
+    }
+
+    #modalTerminosCondiciones .modal-header {
+        padding: 12px 15px;
+    }
+
+    #modalTerminosCondiciones .modal-title {
+        font-size: 16px;
+    }
+
+    #modalTerminosCondiciones .btn-close {
+        width: 40px;
+        height: 40px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-header {
+        min-height: 60px;
+        padding: 8px 12px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-logo {
+        width: 100px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-logo img {
+        max-width: 85px;
+        max-height: 35px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-header .modal-title {
+        font-size: 16px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-header .btn-close {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    #modalTerminosCondiciones .modal-dialog {
+        width: 100%;
+        margin: 0;
+    }
+
+    #modalTerminosCondiciones .modal-content {
+        height: 100vh;
+
+        border-radius: 0;
+    }
+
+    #modalTerminosCondiciones .modal-header {
+        padding: 10px 14px;
+    }
+
+    #modalTerminosCondiciones .modal-title {
+        font-size: 15px;
+    }
+
+    #modalTerminosCondiciones .btn-close {
+        width: 42px;
+        height: 42px;
+    }
+    #modalTerminosCondiciones .modal-terminos-header {
+        min-height: 58px;
+        padding: 8px 10px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-logo {
+        width: 80px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-logo img {
+        max-width: 70px;
+        max-height: 30px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-header .modal-title {
+        font-size: 14px;
+    }
+
+    #modalTerminosCondiciones .modal-terminos-header .btn-close {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* ESTLOS PARA EL FORM */
+/* Estilos para los labels - ocultos para coincidir con tu diseño */
+.form-label {
+    display: none;
+}
+
+/* Estilos para los controles del formulario */
+.form-control {
+    border: 2px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 16px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    height: 55px;
+}
+
+.form-control:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+    background-color: #ffffff;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Estilos específicos para los selects */
+select.form-control {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 12px center;
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    padding-right: 40px;
+}
+
+/* Botón personalizado - amarillo como en tu imagen */
+.btn-custom {
+    background: linear-gradient(135deg, var(--color-principal), #ffb300);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 15px 25px;
+    font-weight: 700;
+    font-size: 16px;
+    color: #000;
+    transition: all 0.3s ease;
+    height: 55px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #ffb300, #ff8f00);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+    color: #000;
+}
+
+.btn-custom:active {
+    transform: translateY(0);
+}
+
+/* Iconos en los campos */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .form-control {
+    padding-left: 50px;
+}
+
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+    font-size: 18px;
+    z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .floating-search-wrapper {
+        width: 95%;
+        bottom: 40px;
+        /* Cambiado de 20px a 40px */
+    }
+
+    .search-container {
+        padding: 20px 15px;
+        border-radius: 20px;
+    }
+
+    .floating-search-wrapper.sticky .search-container {
+        padding: 15px;
+        border-radius: 0;
+    }
+
+    .form-control {
+        height: 50px;
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .input-with-icon .form-control {
+        padding-left: 45px;
+    }
+
+    .btn-custom {
+        height: 50px;
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+/* ESTILOS PARA TARJETAS DE PROGRAMACION */
+
+/* Sección de Programaciones */
+#contenedor-programaciones {
+    background: var(--color-fondo);
+    min-height: 60vh;
+}
+
+#contenedor-programaciones h3 {
+    color: var(--color-texto);
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Contenedor de programaciones - cambiar de grid a lista */
+#lista-programaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Tarjeta horizontal de programación */
+.programacion-item {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--sombra-suave);
+    padding: 1.5rem;
+    transition: var(--transition2);
+    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.programacion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-media);
+    border-color: var(--color-primario);
+}
+
+.programacion-item.destacado {
+    border-left: 4px solid var(--color-primario);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.programacion-item.destacado .badge-destacado {
+    background: var(--color-primario);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Información del servicio */
+.servicio-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 120px;
+}
+
+.servicio-tipo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-texto);
+    margin-bottom: 0.25rem;
+}
+
+.servicio-detalle {
+    color: var(--color-texto-claro);
+    font-size: 0.9rem;
+}
+
+/* Información de horarios */
+.horario-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.hora-salida,
+.hora-llegada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hora {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-texto);
+}
+
+.estacion {
+    font-size: 0.85rem;
+    color: var(--color-texto-claro);
+    text-align: center;
+}
+
+.ruta-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 1rem;
+}
+
+.ruta-linea {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-texto-claro);
+}
+
+.ruta-linea::before,
+.ruta-linea::after {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: var(--color-texto-claro);
+}
+
+.duracion {
+    font-size: 0.85rem;
+    color: var(--color-texto-claro);
+    text-align: center;
+}
+
+.tipo-viaje {
+    font-size: 0.8rem;
+    color: var(--color-primario);
+    font-weight: 600;
+}
+
+/* Información de precio y acciones */
+.precio-acciones {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    min-width: 180px;
+}
+
+.precio-info {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+    gap: 1rem;
+    text-align: right;
+    flex-wrap: wrap;
+}
+
+.precio-desde {
+    font-size: 0.8rem;
+    color: var(--color-texto-claro);
+    margin-bottom: 0;
+    margin-right: 0.5rem;
+}
+
+.precio {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primario);
+    margin-right: 1rem;
+}
+
+.asientos-disponibles {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: #f59e0b;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.acciones {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-ver-detalles {
+    background: transparent;
+    border: 2px solid var(--color-primario);
+    color: var(--color-primario);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition2);
+    text-decoration: none;
+}
+
+.btn-ver-detalles:hover {
+    background: var(--color-primario);
+    color: white;
+}
+
+.btn-ver-asientos {
+    background: var(--color-primario);
+    border: 2px solid var(--color-primario);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition2);
+}
+
+.btn-ver-asientos:hover {
+    background: var(--color-secundario);
+    border-color: var(--color-secundario);
+    transform: translateY(-1px);
+}
+
+/* Responsive para programaciones */
+@media (max-width: 768px) {
+    .programacion-item {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .horario-info {
+        flex-direction: column;
+        gap: 1rem;
+        min-width: auto;
+    }
+
+    .ruta-info {
+        margin: 0;
+    }
+
+    .precio-acciones {
+        align-items: center;
+        min-width: auto;
+    }
+
+    .acciones {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-ver-detalles,
+    .btn-ver-asientos {
+        flex: 1;
+    }
+}
+
+/* Mantener los estilos de badges existentes */
+.badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge.libre {
+    background-color: var(--color-secundario);
+    color: white;
+}
+
+.badge.ocupado {
+    background-color: #dc2626;
+    color: white;
+}
+
+.badge.reservado {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.badge.seleccionado {
+    background-color: #059669;
+    color: white;
+}
+
+/* Animaciones para las programaciones */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.programacion-item {
+    animation: slideInLeft 0.6s ease-out;
+}
+
+/* Animaciones para las tarjetas */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ESTILOS DE ASIENTOS */
+/* ========================================= */
+/* ESTILOS BASE PARA SECCIÓN DE ASIENTOS */
+/* ========================================= */
+
+/* Sección expandible de asientos */
+.asientos-expandible {
+    display: none;
+    background: #f8fafc;
+    border-top: 2px solid #e2e8f0;
+    padding: 2rem;
+    margin-top: 1rem;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    animation: expandir 0.3s ease-out;
+}
+
+.asientos-expandible.activo {
+    display: block;
+}
+
+@keyframes expandir {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    to {
+        opacity: 1;
+        max-height: 1000px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* Header de asientos */
+.asientos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.pestanas-piso {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pestana-piso {
+    background: white;
+    border: 2px solid #e2e8f0;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    font-size: 0.9rem;
+    min-height: 44px;
+}
+
+.pestana-piso.activa {
+    background: var(--color-primario);
+    color: white;
+    border-color: var(--color-primario);
+}
+
+.btn-cerrar-asientos {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 44px;
+}
+
+.btn-cerrar-asientos:hover {
+    background: #4b5563;
+}
+
+/* Contenido principal */
+.contenido-asientos {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+}
+
+.plano-asientos {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 0px;
+    border: 2px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Grid de asientos */
+.asientos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem 0;
+}
+
+.asiento-expandible {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.8rem;
+    font-weight: 600;
+    position: relative;
+    min-height: 44px;
+}
+
+.asiento-expandible.libre {
+    background: #e5e7eb;
+    color: #6b7280;
+    border-color: #d1d5db;
+}
+
+.asiento-expandible.libre:hover {
+    background: var(--color-primario);
+    color: white;
+    border-color: var(--color-primario);
+    transform: scale(1.1);
+}
+
+.asiento-expandible.ocupado {
+    background: #fca5a5;
+    color: #dc2626;
+    border-color: #f87171;
+    cursor: not-allowed;
+}
+
+.asiento-expandible.seleccionado {
+    background: #059669;
+    color: white;
+    border-color: #059669;
+    transform: scale(1.1);
+}
+
+.asiento-expandible.pasillo {
+    margin-right: 1rem;
+}
+
+/* Panel de selección */
+.panel-seleccion {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    height: fit-content;
+}
+
+.precio-aproximado {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.precio-aproximado h6 {
+    color: var(--color-texto-claro);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.mensaje-seleccion {
+    color: var(--color-texto-claro);
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.btn-continuar-expandible {
+    width: 100%;
+    background: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    min-height: 48px;
+}
+
+.btn-continuar-expandible:hover {
+    background: var(--color-secundario);
+}
+
+.btn-continuar-expandible:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================= */
+/* CONTENEDORES DE PISOS - LAYOUT DESKTOP (HORIZONTAL) */
+/* ========================================= */
+
+/* Contenedor principal de pisos - HORIZONTAL EN DESKTOP/LAPTOP */
+[id*="contenedor-pisos-"] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 2rem !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    width: 100%;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    margin: 0.5rem 0;
+    flex-wrap: wrap;
+}
+
+/* Contenedor individual de cada piso */
+.piso-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: auto !important;
+    max-width: 320px !important;
+    min-width: 305px !important;
+    flex: 0 0 auto !important;
+    margin-bottom: 0;
+    margin-right: 1rem;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.piso-container:last-child {
+    margin-right: 0;
+}
+
+/* Contenedor del vehículo */
+.parent_vehiculo {
+    width: 305px !important;
+    max-width: 305px !important;
+    margin: 0 !important;
+    position: relative !important;
+    background-color: white;
+    border-left: 2px solid #ccc !important;
+    border-right: 2px solid #ccc !important;
+    user-select: none;
+    touch-action: none;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+.vehiculo_segundoPiso {
+    border-top: 2px solid #ccc !important;
+    border-bottom: 2px solid #ccc !important;
+    margin-top: 1rem;
+}
+
+/* Imágenes del vehículo - PERFECTAMENTE ALINEADAS */
+.piso-container img {
+    width: 305px !important;
+    max-width: 305px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen delantera - ALINEADA CON CONTENEDOR */
+.piso-container img[src*="vehiculo_delantero"] {
+    width: 305px !important;
+    height: 150px !important;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto 0 auto;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Imagen trasera - ALINEADA CON CONTENEDOR */
+.piso-container img[src*="vehiculo_trasera"] {
+    width: 305px !important;
+    height: 40px !important;
+    object-fit: cover;
+    object-position: center;
+    margin: 0 auto 0 auto;
+    border-radius: 0 0 8px 8px;
+}
+
+/* Indicador de piso */
+.vehiculo_segundoPiso::before {
+    content: "Piso 2";
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--color-primario, #3b82f6), var(--color-secundario, #1d4ed8));
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    z-index: 5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN - MEDIA QUERIES */
+/* ========================================= */
+
+/* DESKTOP GRANDE - 1200px y más */
+@media (min-width: 1200px) {
+    [id*="contenedor-pisos-"] {
+        gap: 3rem !important;
+        padding: 1.5rem;
+    }
+
+    .piso-container {
+        padding: 1rem;
+        margin-right: 2rem;
+    }
+
+    .piso-container:last-child {
+        margin-right: 0;
+    }
+}
+
+/* TABLET/LAPTOP - 1024px y menos (pero más de 768px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .asientos-expandible {
+        padding: 1.5rem;
+    }
+
+    .contenido-asientos {
+        grid-template-columns: 1fr 280px;
+        gap: 1.5rem;
+    }
+
+    .asientos-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .panel-seleccion {
+        padding: 1.25rem;
+    }
+
+    /* Mantener horizontal pero ajustar tamaños */
+    [id*="contenedor-pisos-"] {
+        gap: 1.5rem !important;
+        padding: 0.75rem;
+        flex-direction: row !important;
+    }
+
+    .piso-container {
+        max-width: 280px !important;
+        min-width: 260px !important;
+        padding: 0.5rem;
+        margin-right: 1rem;
+        margin-bottom: 0;
+    }
+
+    .piso-container:last-child {
+        margin-right: 0;
+    }
+
+    .parent_vehiculo {
+        width: 280px !important;
+        max-width: 280px !important;
+    }
+
+    .piso-container img {
+        width: 280px !important;
+        max-width: 280px !important;
+    }
+
+    .piso-container img[src*="vehiculo_delantero"] {
+        width: 280px !important;
+        height: 130px !important;
+    }
+
+    .piso-container img[src*="vehiculo_trasera"] {
+        width: 280px !important;
+        height: 35px !important;
+    }
+}
+
+/* MÓVIL Y TABLETS PEQUEÑAS - 768px y menos - CAMBIO A VERTICAL */
+@media (max-width: 768px) {
+    .asientos-expandible {
+        padding: 1rem;
+    }
+
+    @keyframes expandir {
+        from {
+            opacity: 0;
+            max-height: 0;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        to {
+            opacity: 1;
+            max-height: 1000px;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .asientos-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .pestanas-piso {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .contenido-asientos {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .plano-asientos {
+        padding: 0px;
+        order: 1;
+    }
+
+    .panel-seleccion {
+        padding: 1rem;
+        order: 2;
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+        margin: 0 -1rem -1rem -1rem;
+    }
+
+    .asientos-grid {
+        max-width: 100%;
+        gap: 0.75rem;
+    }
+
+    .asiento-expandible {
+        width: 42px;
+        height: 42px;
+        font-size: 0.75rem;
+        min-height: 42px;
+    }
+
+    .asiento-expandible.pasillo {
+        margin-right: 0.5rem;
+    }
+
+    .precio-aproximado {
+        margin-bottom: 1.5rem;
+    }
+
+    .mensaje-seleccion {
+        margin-bottom: 1.5rem;
+    }
+
+    /* CAMBIO A VERTICAL EN MÓVIL */
+    [id*="contenedor-pisos-"] {
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        padding: 0.75rem;
+    }
+
+    .piso-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: auto !important;
+        margin-right: 0 !important;
+        margin-bottom: 1rem;
+    }
+
+    .piso-container:last-child {
+        margin-bottom: 0;
+    }
+
+    .parent_vehiculo {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .piso-container img {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .piso-container img[src*="vehiculo_delantero"] {
+        width: 100% !important;
+        height: 120px !important;
+        max-height: 120px;
+    }
+
+    .piso-container img[src*="vehiculo_trasera"] {
+        width: 100% !important;
+        height: 35px !important;
+        max-height: 35px;
+    }
+
+    .vehiculo_segundoPiso::before {
+        top: -30px;
+        font-size: 0.8rem;
+        padding: 0.375rem 0.875rem;
+    }
+}
+
+/* MÓVIL PEQUEÑO - 480px y menos */
+@media (max-width: 480px) {
+    .asientos-expandible {
+        padding: 0.75rem;
+    }
+
+    .asientos-header {
+        gap: 0.75rem;
+    }
+
+    .pestana-piso {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 40px;
+    }
+
+    .btn-cerrar-asientos {
+        padding: 0.375rem 0.75rem;
+        font-size: 0.8rem;
+        min-height: 40px;
+    }
+
+    .plano-asientos {
+        padding: 0px;
+    }
+
+    .asientos-grid {
+        gap: 0.5rem;
+        max-width: 100%;
+    }
+
+    .asiento-expandible {
+        width: 38px;
+        height: 38px;
+        font-size: 0.7rem;
+        min-height: 38px;
+    }
+
+    .asiento-expandible.pasillo {
+        margin-right: 0.25rem;
+    }
+
+    .panel-seleccion {
+        padding: 0.75rem;
+        margin: 0 -0.75rem -0.75rem -0.75rem;
+    }
+
+    .precio-aproximado {
+        margin-bottom: 1rem;
+    }
+
+    .precio-aproximado h6 {
+        font-size: 0.8rem;
+    }
+
+    .mensaje-seleccion {
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-continuar-expandible {
+        min-height: 44px;
+    }
+
+    [id*="contenedor-pisos-"] {
+        padding: 0.5rem;
+        gap: 0.75rem !important;
+    }
+
+    .piso-container {
+        padding: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .piso-container:last-child {
+        margin-bottom: 0;
+    }
+
+    .piso-container img[src*="vehiculo_delantero"] {
+        height: 100px !important;
+    }
+
+    .piso-container img[src*="vehiculo_trasera"] {
+        height: 30px !important;
+    }
+
+    .vehiculo_segundoPiso::before {
+        top: -25px;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+    }
+}
+
+/* MÓVIL MUY PEQUEÑO - 360px y menos */
+@media (max-width: 360px) {
+    .asientos-expandible {
+        padding: 0.5rem;
+    }
+
+    .asientos-grid {
+        gap: 0.375rem;
+    }
+
+    .asiento-expandible {
+        width: 35px;
+        height: 35px;
+        font-size: 0.65rem;
+        min-height: 35px;
+    }
+
+    .pestana-piso {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .btn-cerrar-asientos {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .panel-seleccion {
+        margin: 0 -0.5rem -0.5rem -0.5rem;
+    }
+
+    .piso-container img[src*="vehiculo_delantero"] {
+        height: 90px !important;
+    }
+
+    .piso-container img[src*="vehiculo_trasera"] {
+        height: 25px !important;
+    }
+
+    .vehiculo_segundoPiso::before {
+        top: -20px;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+/* ========================================= */
+/* ORIENTACIÓN HORIZONTAL EN MÓVIL */
+/* ========================================= */
+@media (max-width: 768px) and (orientation: landscape) {
+    .contenido-asientos {
+        grid-template-columns: 1fr 280px;
+    }
+
+    .panel-seleccion {
+        position: static;
+        box-shadow: none;
+        border-radius: var(--border-radius);
+        margin: 0;
+        order: 2;
+    }
+
+    .asientos-header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    /* En landscape móvil, intentar horizontal si hay espacio */
+    [id*="contenedor-pisos-"] {
+        flex-direction: row !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+    }
+
+    .piso-container {
+        flex: 0 0 auto !important;
+        max-width: 250px !important;
+        min-width: 200px !important;
+        margin-right: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .piso-container:last-child {
+        margin-right: 0;
+    }
+
+    .parent_vehiculo {
+        width: 100% !important;
+        max-width: 250px !important;
+    }
+
+    .piso-container img {
+        width: 100% !important;
+        max-width: 250px !important;
+    }
+
+    .piso-container img[src*="vehiculo_delantero"] {
+        width: 100% !important;
+        height: 100px !important;
+    }
+
+    .piso-container img[src*="vehiculo_trasera"] {
+        width: 100% !important;
+        height: 30px !important;
+    }
+}
+
+/* ========================================= */
+/* MEJORAS PARA DISPOSITIVOS TÁCTILES */
+/* ========================================= */
+@media (hover: none) and (pointer: coarse) {
+    .asiento-expandible.libre:hover {
+        background: #e5e7eb;
+        color: #6b7280;
+        border-color: #d1d5db;
+        transform: none;
+    }
+
+    .asiento-expandible:active {
+        transform: scale(0.95);
+    }
+
+    .pestana-piso:hover {
+        background: white;
+    }
+
+    .pestana-piso.activa:hover {
+        background: var(--color-primario);
+    }
+
+    .pestana-piso:active {
+        transform: scale(0.95);
+    }
+
+    .btn-cerrar-asientos:hover {
+        background: #6b7280;
+    }
+
+    .btn-cerrar-asientos:active {
+        transform: scale(0.95);
+    }
+
+    .btn-continuar-expandible:hover:not(:disabled) {
+        background: var(--color-primario);
+    }
+
+    .btn-continuar-expandible:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+}
+
+/* ========================================= */
+/* MEJORAS ADICIONALES PARA BOOTSTRAP */
+/* ========================================= */
+@media (max-width: 768px) {
+    .d-flex.flex-md-row {
+        flex-direction: column !important;
+    }
+
+    .gap-3 {
+        gap: 0.75rem !important;
+    }
+}
+
+.piso-container * {
+    box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+    .align-items-start {
+        align-items: center !important;
+    }
+}
+
+/* ========================================= */
+/* UTILIDADES ADICIONALES */
+/* ========================================= */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Animaciones suaves */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Progreso de pasos responsive */
+@media (max-width: 768px) {
+    .step:not(:last-child)::after {
+        width: 1rem;
+    }
+
+    .step-label {
+        font-size: 0.7rem;
+    }
+
+    .asientos-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+
+    .asiento {
+        width: 35px;
+        height: 35px;
+    }
+
+    .progreso-pasos {
+        gap: 1rem;
+    }
+
+    .temporizador-compra {
+        flex-direction: column;
+        gap: 0.25rem;
+        text-align: center;
+    }
+}
+
+
+
+/* ESTILOS PARA EL TEMPORIZADOR */
+/* DESKTOP - Temporizador flotante */
+.timer-container {
+    position: fixed;
+    top: 140px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.purchase-timer {
+    background: linear-gradient(135deg, #17a2b8, #20c997);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-family: 'Arial', sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    min-width: 220px;
+}
+
+.timer-header {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    opacity: 0.95;
+}
+
+.timer-numbers {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 6px;
+}
+
+.timer-labels {
+    font-size: 10px;
+    font-weight: 400;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+/* MÓVIL - Temporizador en el layout */
+@media (max-width: 768px) {
+    .timer-container {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .purchase-timer {
+        min-width: 200px;
+        padding: 12px 20px;
+    }
+
+    .timer-numbers {
+        font-size: 20px;
+    }
+
+    .timer-labels {
+        font-size: 9px;
+    }
+
+    .steps-section {
+        margin-top: 10px;
+    }
+
+    .step {
+        margin-right: 15px;
+        margin-bottom: 10px;
+    }
+}
+
+
+.total-seleccion-expandible {
+    color: black;
+}
+
+
+.cargando {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.loader-asiento {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.piso-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #ffff;
+    background: #195796;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================
+   PARTE DELANTERA DEL BUS
+   ========================================== */
+
+.parte-delantera-bus {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.parte-delantera-bus img {
+    display: block;
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+}

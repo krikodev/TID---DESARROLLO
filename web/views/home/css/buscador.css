@@ -1,0 +1,204 @@
+/* CONTENEDOR DEL CARRUSEL */
+#carouselExample {
+    position: relative;
+    overflow: visible; /* Permitir que la barra sobresalga si es necesario */
+}
+
+/* --- WRAPPER DE BÚSQUEDA (ESTILO CÁPSULA) --- */
+.floating-search-wrapper {
+    position: absolute !important;
+    bottom: -40px !important; /* Sobresale un poco del carrusel como en la imagen */
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 95%;
+    max-width: 1100px;
+    z-index: 900; /* Menor que el nav para no tapar submenús */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* CUANDO ES STICKY (AL HACER SCROLL) */
+.floating-search-wrapper.sticky {
+    position: fixed !important;
+    top: 80px !important; /* AJUSTA ESTO: Debe ser la altura exacta de tu NAV */
+    bottom: auto !important;
+    width: 100%;
+    max-width: none;
+    transform: translateX(-50%);
+    z-index: 950; /* Sigue siendo menor que el nav (usualmente 1030 en Bootstrap) */
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from { transform: translate(-50%, -100%); }
+    to { transform: translate(-50%, 0); }
+}
+
+/* --- DISEÑO DE LA "BARRA BLANCA" (CONTENEDOR) --- */
+.search-container {
+    background: #ffffff;
+    border-radius: 50px; /* Forma de cápsula completa */
+    padding: 10px 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.floating-search-wrapper.sticky .search-container {
+    border-radius: 0; /* Se vuelve plana al pegarse arriba */
+    padding: 10px 5%;
+}
+
+/* --- DIVISORES ENTRE CAMPOS --- */
+@media (min-width: 768px) {
+    #form-busqueda .col-md-3 {
+        border-right: 1px solid #eee; /* Divisores verticales como la imagen */
+    }
+    #form-busqueda .col-md-3:last-child {
+        border-right: none;
+    }
+}
+
+/* --- INPUTS Y SELECTS (ESTILO LIMPIO) --- */
+.form-control {
+    border: none !important; /* Quitamos bordes para que parezca un solo bloque */
+    background: transparent !important;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    height: 45px;
+    box-shadow: none !important;
+    padding-left: 10px;
+}
+
+/* Texto pequeño encima del valor (Origen/Destino/Fecha) */
+.input-with-icon {
+    display: flex;
+    flex-direction: column;
+    padding-left: 45px;
+    position: relative;
+}
+
+.input-with-icon::before {
+    content: attr(data-label); /* Si quieres agregar texto pequeño arriba */
+    font-size: 11px;
+    color: #0970ab;
+    margin-bottom: -5px;
+}
+
+/* Iconos */
+.input-with-icon .input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0962ab;
+    font-size: 1.2rem;
+}
+
+/* --- BOTÓN NARANJA (ESTILO IMAGEN) --- */
+.btn-custom {
+    background: #096aab !important; /* Color naranja de la imagen */
+    color: #fff !important;
+    border-radius: 35px !important;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: none;
+    height: 50px;
+    transition: transform 0.2s, background 0.2s;
+    width: 100%;
+}
+
+.btn-custom:hover {
+    background: #096aab !important;
+    transform: scale(1.02);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 767px) {
+    .floating-search-wrapper {
+        bottom: 20px !important;
+        width: 92%;
+    }
+    .search-container {
+        border-radius: 20px;
+        padding: 20px;
+    }
+    #form-busqueda .col-12 {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    .btn-custom {
+        margin-top: 10px;
+    }
+}
+
+/* Esto evita que el contenedor invisible del sticky tape el nav */
+.floating-search-wrapper.sticky {
+    pointer-events: none; 
+}
+.search-container {
+    pointer-events: auto; 
+}
+
+/* Ajustes */
+
+.floating-search-wrapper.sticky {
+    left: 0 !important;
+    transform: none !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #0970ab; /* naranja */
+}
+
+/* Contenedor interno en sticky */
+.floating-search-wrapper.sticky .search-container {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+
+    padding: 12px 4% !important;
+    border-radius: 0 !important;
+}
+
+/* Texto e íconos en blanco */
+.floating-search-wrapper.sticky .form-control {
+    color: #ffffff !important;
+}
+
+.floating-search-wrapper.sticky .input-icon {
+    color: #ffffff !important;
+}
+
+/* Placeholder / option seleccionado visible */
+.floating-search-wrapper.sticky select.form-control {
+    color: #ffffff !important;
+}
+
+/* Opciones del select (dropdown) */
+.floating-search-wrapper.sticky select.form-control option {
+    color: #212529 !important;
+    background: #ffffff !important;
+}
+
+/* Divisores más sutiles en sticky */
+.floating-search-wrapper.sticky #form-busqueda .col-md-3 {
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+
+.floating-search-wrapper.sticky .btn-custom {
+    background: #ffffff !important;
+    color: #096aab !important;
+    font-weight: 800;
+    border-radius: 30px;
+}
+
+.floating-search-wrapper.sticky .btn-custom:hover {
+    background: #f2f2f2 !important;
+    transform: scale(1.02);
+}

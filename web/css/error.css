@@ -1,0 +1,62 @@
+.error-message {
+    display: none;
+    position: fixed;
+    top: 50%;
+    /* Centrado vertical */
+    left: 50%;
+    border: 1px solid gray;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1021;
+    opacity: 0;
+    /* Inicialmente transparente */
+    transition: opacity 0.3s ease-in-out;
+    /* Transición suave de opacidad */
+}
+
+.error-message h3 {
+    color: rgb(80, 80, 80);
+    margin-top: 9px ;
+}
+
+.borde{
+    border-radius : 10px
+}
+
+.error-message p {
+    color: gray;
+}
+
+.error-message.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Estilos para deshabilitar el scroll */
+.no-scroll {
+    overflow: hidden;
+}
+
+.error-message .ok-button {
+    border: 1px solid rgb(177, 92, 31);
+    padding: 10px 30px;
+    background-color: chocolate;
+    border-radius: 6px;
+    color: white;
+
+}
+
+.error-message .ok-button:hover {
+    background-color: rgb(160, 81, 24);
+}
+
+.icon_advertencia{
+    font-size: 45px; 
+    color: rgb(255, 87, 34);
+    border: 1px solid rgb(255, 141, 106);
+    padding: 15px;
+    border-radius: 50px;
+}

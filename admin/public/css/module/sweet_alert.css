@@ -1,0 +1,24 @@
+/*SWEET ALERT*/
+.swal2-popup {
+    width: 24rem !important;
+}
+
+.swal2-icon {
+    font-size: 13px !important;
+}
+
+.swal2-title {
+    font-family: var(--fuente) !important;
+    font-size: 16px !important;
+}
+
+.swal2-html-container {
+    font-family: var(--fuente) !important;
+    font-size: 13px !important;
+}
+
+.swal2-confirm,
+.swal2-cancel {
+    font-size: 12px !important;
+    font-family: var(--fuente) !important;
+}

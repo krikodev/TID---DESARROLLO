@@ -1,0 +1,281 @@
+Detalles del Sistema de Transporte
+13/10/2023 --> actualización de archivos de Admin/ nuevas actualizaciones en bus-peru.com.pe
+24/10/2023 --> unión de archivos trabajados para corregir resumenes de pasajeros e implementación del módulo de encomiendas (ventas) con el proceso de afectaciones
+25/10/2023 --> Cambios en la interfaz del modulo pasaje especificamente enfocado a la tabla resumnes, para que se muestre los botones de xml y cdr. -> Rusbel Palacios Matos
+=======
+03/11/2023 --> Actualización del sistema, se corrige los multiusuarios y reservas de pasajes
+	   --> Se actualiza las BD principal
+=======
+10/11/023 ---> Modificación en los asientos, se coloca terminal y medio de pago
+10/11/2023 ---> Correcciones urgentes
+=======
+15/11/2023 ---> Actaulización del sistema en arreglar datos de usuario y modificación de BD
+=======
+20/11/2023 ---> Re estructuración del sistema
+=======
+20/11/2023 ---> Se unio trabajo de antony y josue.
+=======
+06/12/2023 ---> Correcciones de encomiendas, imppresion de encomiendas y personal
+=======
+07/12/2023 ---> Correciones en facturación API - Sistema
+=======
+08/12/2023 ---> corrección del boton anular y reenviar
+08/12/2023 ---> encomienda: pago en destino correcion de consulta
+=======
+08/12/2023 ---> Ordena las tablas de comprobantes
+=======
+08/12/2023 ---> Correcion de pago en destino encomienda
+=======
+10/12/2023 ---> Se corrige problema en pago en destino de encomiendas, se muestra estado y lista de programaciones en embarques
+=======
+12/12/2023 ---> Cambia vista de las formas de pago en el módulo de compras web
+=======
+14/12/2023 ---> Correción e implementación en programaciones
+=======
+08/01/2024 ---> Creación de modulos de notas de credito y debito, se corrige e implementa las vistas de impresion de comprobantes
+=======
+23/03/2024 ---> Reformulación del sistema y mejora de bases de datos (solo demostración)
+=======
+13/04/2024 ---> Actualización de sistema para el control de programaciones y modificación en las fechas de nacimiento de nuevos clientes en pasajes y encomiendas
+=======
+14/04/2024 ---> Actualización de imagenes y archivos pdf para la web y sistema (login e iconos)
+=======
+04/07/2024 ---> Actualizando accesos
+=======
+12/07/2024 ---> Actualización y correcciones (nuevo cliente)
+=======
+18/07/2024 ---> Actualizaciones del sistema en manifiestos y formatos
+=======
+07/08/2024 ---> Actualización y corrección del sistema en DNI e impresiones
+    Modificación en documentos (boletas de venta)
+=======
+01/02/2025 ---> Nuevas actualizaciones 2025
+=======
+07/03/2025 ---> Actualizacion corrigiendo fallas en la web
+=======
+10/04/2025 ---> Actualizaciones importantes en el sistema y cambio de vista de la web
+=======
+11/04/2025 ---> Actualizando y corrigiendo datos para JRCargo
+=======
+03/06/2025 ---> Actualización de datos en encomiendas y guías de remisión transportista
+=======
+25/06/2025 ---> Actualización de versión e implementaciones para encomiendas
+		Actualización a Transportes Bandeón Junín
+=======
+09/07/2025 ---> Actualización a JRCargo
+=======
+15/07/2025 ---> Actualización de sistema a Baldeón Junin
+		Actualización de impresiones de comprobantes y liquidaciones
+		Actualización de página web Baldeón Junín
+=======
+31/07/2025 ---> Actualizando a nueva estructura y organizando
+=======
+09/08/2025 ---> Actualización de egresos y formatos
+=======
+18/08/2025 ---> Actualización de sistema, actualización de errores y activación de la plataforma bluetooh
+		Actualización y corrección del reporte de liquidación general
+=======
+20/08/2025 ---> Actualización de sistema para Sanchez (config / web)
+=======
+25/08/2025 ---> Arreglamos errores de envio de comprobantes y adecuaciones para Sanchez y IGR
+                Corecciones en generales y autroización de anulaciones en Sanchez   
+=======
+26/08/2025 ---> Actualizando impresiones desde celular
+=======
+06/09/2025 ---> Se cooregio el error en los formatos de embarque y los logos de los comprobantes
+=======
+07/09/2025 ---> Se actualiza con las correcciones de envió de Guías de Remisión de forma individual y grupal, se evalúa los detalles de dirección de las guías 			transportistas. (Actualización de demo transportista)
+=======
+12/09/2025 ---> Realizando correcciones en clientes / pasajero y otras vistas
+=======
+23/09/2025 ---> Actualizando y corrigiendo errores en venta de pasajes por duplicidad
+=======
+29/09/2025 ---> Actualizando y corrigiendo errores en todos los listados
+=======
+03/10/2025 ---> Actualizando el archivo de comprobantes report para la creacion de excels con php (controlador, model, js), tambien en los archivos del login (loginmodel.php) y arreglos en los logos de encomienda, pasaje y manifiesto
+=======
+04/10/2025 ---> Actualizando demo tid.net.pe para revision
+======
+07/10/2025 ---> Se arreglo el filtrado del reporte de comprobantes, ademas de correciones en los formatos de embarque y desembarque; y otros arreglos menores (todos los formatos de liquidacion, la vista de encomiendas_report)
+        Arreglos en los formatos de embarque.php y desembarque.php
+======
+13/10/2025 ---> Se hace las actualización de sistema en embarques y desembarque, además de actualiza la BD y a la empresa EuroSAC
+======
+14/10/2025 ---> Actualizacion y mejora del logo en login y actualizacion en el formato de embarque
+======
+16/10/2025 ---> Corrección y actualización de los formatos de desembarque.
+		Implementación de comprobantes emitidos en la Amazonía / y gravados
+======
+18/10/2025 ---> Se subio actualizacion en los formatos archivo y transportista, se trabajaron en las vistas de las tablas de conductor y pasajero (y sus modales)
+======
+19/10/2025 ---> Se hace la fusión de ramas para comprobar en tid.net.pe
+======
+20/10/2025 ---> Actualizando Sistema de EuroSAC
+		Actualizando JrCargo
+		Actualizando IGR
+		Actualizando Sanchez
+		Actualizando TMallcco
+======
+21/10/2025 ---> Se trabajo en los formatos de embarque, desembarque y desembarqueH para el tema de los terminales y sus direcciones de la cabecera
+======
+24/10/2025 ---> Se actualiza la demo tid.net.pe para las pruebas del sistema con las nuevas funcionabiliaddes
+======
+27/10/2025 ---> Se actualiza la información para la empresa Moderno SAC
+======
+29/10/2025 ---> Subiendo nuevas actualizaciones a JRCargo para las pruebas reales
+======
+01/11/2025 ---> Actualizaciones en la guia de remision Transportista y demas.
+				Actualización de JRCargo y demo
+04/11/2025 ---> Culminación de procesos de la guia de transportista y otros relacionados
+				Actualización de BD y demo y JRCargo
+======
+10/11/2025 ---> Actualización y configuración de EuroSAC
+		Actualización e BD
+======
+11/11/2025 ---> Actualización de módulos de Rusbel
+		Agrega modulos de facturación electrónica
+		Actualización y comprobación a demo
+		Actualizacion en los formatos de encomiendas comprobante, nota de venta, transportista y archivo, y se modifico encomiendamodel para el tema de las direcciones y celular para los formatos 
+======
+16/11/2025 ---> Actualización del módulo de facturación (EuroSAC)
+		Correcciones de facturación a través de terminales (Afectos a la Selva)
+		Actualización de la BD
+======
+18/11/2025 ---> Actualización de últimos cambios y arreglos para SUNAT
+		Actualizando impresiones (opcional) y vistas finales
+		Actualización de Turismo Moderno
+======
+21/11/2025 ---> Actualizando EuroSAC
+		Actualizando Camibel Logistic SAC
+======
+02/12/2025 ---> Actualizando el reporte y un nuevo filtro para viajes generales (viaje_report_model.php) 
+		Se actualizo el diseño de los datatable de encomiendas de comprobantes y nota de venta
+		Se actualizaron en los formatos de encomienda, nota de venta, comprobante, archivo, transportista y embarque (encomiendamodel)
+======
+03/12/2025 ---> Haciendo pruebas finales de lo integrado el 02/12/2025
+		Activando en web el formulario de reclamos, también se actualiza BD de reclamos
+======
+06/12/2025 ---> Actualizando Turismo Moderno y BD
+======
+09/12/2025 ---> Actualizaciones en ventas al credito / cancelación y facturación de varias notas de venta
+		Actualización de BD nueva y API SUNAT
+		Actualizando Demo
+======
+11/12/2025 ---> Actualizando TMallcccosac ultima versión
+		Actualizacion menor en el datatable de listado de notas de venta, la parte inferior de facturador y el navbar
+======
+13/12/2025 ---> Actualizando sistema y nuevas correcciones
+======
+16/12/2025 ---> Actualizando Demo
+======
+18/12/2025 ---> Actualizando el Datatable del Reporte de Pasajeros
+======
+22/12/2025 ---> Actualización de Detracciones y otras correcciones en impresion y listados de entrega
+				Corecciones y modificaciones en BD
+======
+23/12/2025 ---> Actualizaciones generales
+======
+24/12/2025 ---> Actualizando Demo y otros finales para su revision
+======
+25/12/2025 ---> Haciendo correcciones en venta de pasajes y adecuación de BD
+======
+29/12/2025 ---> Subiendo cambios y actualizaciones en los comprobantes de encomienda (Notas, boletas y facturas) y el modal de entrega
+				Actualizaciones para pruebas respectivas
+======
+30/12/2025 ---> Actualización final, y verificando en demo
+======
+04/01/2026 ---> Actualización del panel de encomiendas adicionando y modificando la forma de recepcionar encomiendas.
+		Se actualiza el sistema de GutsaExpress
+=====
+05/01/2026 ---> Subiendo las ultimas actualizaciones
+=====
+07/01/2026 ---> Actualizando los formatos de tickets de encomienda, formato de embarque y el menu de personal
+		Actualizando Camibel y otros
+=====
+12/01/2026 ---> Actualizando el diseño y estructura de los formatos de encomienda e incluyendo nuevas opciones a empresa (Actualizando la base de datos)
+		Pequeña actulizacion en los formatos del modulo de facturador
+		Actualizando Logan Express
+=====
+19/01/2026 ---> Actualizacion del modulo de encomiendas (comprobantes y notas de venta A4, control de fechas en embarque, y la seccion de embarques grupales), Y modificacion breve a los formatos de pasajero 
+=====
+21/01/2026 ---> Actualización de operaciones con detracciones, calculo de precios (costo / peso)
+=====
+27/01/2026 ---> Corrigiendo cantidad de decimales (Logan)
+=====
+31/01/2026 ---> Actualizando Logan y notas de crédito y detracciones
+=====
+06/02/2026 ---> Nuevas actualizaciones de guía de transportista
+=====
+11/02/2026 ---> Actualizacion en los formatos de nota de credito y el datatable de listado comprobantes y notas
+=====
+18/02/2026 ---> Subiendo nuevas actualizaciones, se sube y configura también a la empresa Turismo Amanecer
+=====
+20/02/2026 ---> Agregando tablas para el modulo de pasajes para controlar las ventas y los destinos de los pasajeros en tiempo real
+		Se agrando el modal del personal y algunos cambios menores, Correccion en los formatos del facturador y cambio en el modal de encomienda en la referencia de encomiendas
+=====
+21/02/2026 ---> Actualizando nuevas actualizaciones
+=====
+24/02/2026 ---> Actualizando nueva vista de ventas y ventas online, nuevas funcionabilidades
+=====
+25/02/2026 ---> Ultima actualización para inicio de pruebas exhaustivas
+=====
+26/02/2026 ---> Actualizacion del modulo de pasajes y reporte de ventas generales
+=====
+02/03/2026 ---> Actualización final del sistema de la empresa Turismo Amanecer Selva
+		Nuevas opciones de venta de pasajes y venta web
+=====
+04/03/2026 ---> Actualización para impresión de boletas desde celular
+=====
+06/03/2026 ---> Actualizando de programación, encomiendas, filtros, exportaciones, egresos. Nuevas configuraciones para las empresas 			GutsaExpress y Amanecer
+=====
+10/03/2026 ---> Actualización de lista de programación en pasaje y filtros en notas y guias, se actualiza Amanecer
+=====
+11/03/2026 ---> Subiendo cambios en Gutsa Express (finaliza el proceso de actualización)
+====
+12/03/2026 ---> Adicionando cambios y nuevas funcionabilidades en la liquidación de programación por terminales
+====
+15/03/2026 ---> Se agrego el formato de liquidacion usuario ticket.
+		Modificación y actualización de la plataforma de Amanecer, nuevas funcionabilidades
+====
+16/03/2026 ---> Actualización y modificación de egresos por pasajes, corrección de encomiendas, visualización de programaciones anteriores y otros relacionados. Actualización de sistema Amanecer.
+====
+20/03/2026 ---> Actualización de doble RUC y corrección del API SUNAT
+====
+30/03/2026 ---> Haciendo correcciones en embarques, guías y otros
+		Correcciones en notas de crédito
+====
+31/03/2026 ---> Subiendo correcciones en notas de crédito
+====
+04/04/2026 ---> Integración de nuevos módulo: Desembarque por error de embarque y anulación de guías transportista
+====
+20/04/2026 ---> Actualización y modificación de embarques y ajustes en fechas de nacimiento (pasajes)
+====
+22/04/2026 ---> Actualizacion en el modulo de config encomienda, formatos encomienda y facturacion y modulos de reporte comprobante y encomienda
+====
+25/04/2026 ---> Subiendo, corrigiendo y actualizando reportes, fechas de nacimiento y otros en tid.net.pe
+====
+07/05/2026 ---> nueva actualizaciones y correcciones en la parte de encomiendas y embarques, además se modifica las vista, reportes e impresión de comprobantes.
+====
+13/05/2026 ---> Actualización y corrección de guías y crédito, implementación en pasajes posponer y otras correcciones
+====
+28/05/2026 ---> Modificaciones y actualización rutas y otras modificaciones
+====
+04/06/2026 ---> Actualizando sistema con nuevas actualizaciones
+====
+05/06/2026 ---> Correcciones finales en encomiendas (teléfono)
+===
+12/06/2026 ---> Implementación de nuevo API Sunat
+===
+15/06/2026 ---> Subiendo y actualizando sistema a  Inkazon
+====
+22/06/2026 ---> Subiendo actualizaciones y corrigiendo el direccionamiento del APISunat
+====
+04/07/2026 ---> Nuevas actualización de búsqueda de clientes, manejo de precios, impresión de etiquetas y contraseñas maestras
+====
+21/07/2026 ---> Nueva actualización con Ubuntu 24.04 y nueva versión de Hestia
+====
+04/08/2026 ---> Actualizando sistema ultima versión
+====
+25/08/2026 ---> Actualización completa
+====
+05/09/2026 ---> Actualizaciones y modificaciones de reportes en pasajes (trabajo de Omer)

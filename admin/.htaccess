@@ -1,0 +1,22 @@
+RewriteEngine On
+
+#en caso desea el https
+#RewriteCond %{HTTPS} off [OR]
+#RewriteCond %{HTTP_HOST} ^www\. [NC]
+#RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+#RewriteRule ^ https://%1%#{REQUEST_URI} [L,NE,R=301]
+
+# en caso sea una instalacion local /carpeta/
+RewriteBase /tid-transporte/admin/
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#php_value max_execution_time 20000
+
+#en caso sea una instalacion local comentar estas lineas con #
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

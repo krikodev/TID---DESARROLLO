@@ -1,0 +1,305 @@
+:root {
+    --amber: #F59E0B;
+    --amber-light: #FEF3C7;
+    --amber-glow: rgba(245, 158, 11, 0.10);
+    --violet: #7C3AED;
+    --violet-light: #EDE9FE;
+    --violet-glow: rgba(124, 58, 237, 0.10);
+    --surface: #F4F4F8;
+    --surface-2: #FFFFFF;
+    --surface-3: #F0EFF6;
+    --border: rgba(0, 0, 0, 0.07);
+    --text: #1A1A2E;
+    --muted: #9492A8;
+    --radius: 18px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--surface);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    background-image:
+        radial-gradient(ellipse 60% 50% at 20% 0%, rgba(124, 58, 237, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 100%, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+}
+
+.settings-wrapper {
+    width: 100%;
+    max-width: 900px;
+}
+
+.settings-header {
+    margin-bottom: 2.5rem;
+}
+
+.settings-header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+}
+
+.settings-header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1;
+    color: var(--text);
+    margin: 0;
+}
+
+.settings-header h1 span {
+    color: var(--violet);
+}
+
+/* Section card */
+.section-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+    border-radius: var(--radius);
+    padding: 1.5rem 1.5rem 0.75rem;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+}
+
+.section-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.section-card.amber::before {
+    background: radial-gradient(ellipse 80% 50% at 0% 0%, var(--amber-glow), transparent);
+}
+
+.section-card.violet::before {
+    background: radial-gradient(ellipse 80% 50% at 0% 0%, var(--violet-glow), transparent);
+}
+
+.section-card:hover::before {
+    opacity: 1;
+}
+
+.section-card.amber:hover {
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+.section-card.violet:hover {
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+.section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+}
+
+.section-card.amber .section-title {
+    color: var(--amber);
+}
+
+.section-card.violet .section-title {
+    color: var(--violet);
+}
+
+/* Setting item */
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0.75rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+.setting-item:hover {
+    background: var(--surface-3);
+    transform: translateX(3px);
+    color: var(--text);
+}
+
+.setting-item:not(:last-child) {
+    margin-bottom: 2px;
+}
+
+/* Icon circle */
+.item-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.section-card.amber .item-icon {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+}
+
+.section-card.violet .item-icon {
+    background: linear-gradient(135deg, #7C3AED, #6D28D9);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+}
+
+.setting-item:hover .item-icon {
+    transform: scale(1.1) rotate(-4deg);
+}
+
+.section-card.amber .setting-item:hover .item-icon {
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.45);
+}
+
+.section-card.violet .setting-item:hover .item-icon {
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+}
+
+.item-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.item-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1px;
+}
+
+.item-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 300;
+}
+
+.item-arrow {
+    color: var(--muted);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.setting-item:hover .item-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* divider between items */
+.item-divider {
+    height: 1px;
+    margin: 0 0.75rem;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Animate in on load */
+.section-col {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s ease forwards;
+}
+
+.section-col:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.section-col:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.setting-item {
+    opacity: 0;
+    animation: fadeItem 0.4s ease forwards;
+}
+
+.setting-item:nth-child(1) {
+    animation-delay: 0.25s;
+}
+
+.setting-item:nth-child(3) {
+    animation-delay: 0.32s;
+}
+
+.setting-item:nth-child(5) {
+    animation-delay: 0.39s;
+}
+
+.setting-item:nth-child(7) {
+    animation-delay: 0.46s;
+}
+
+@keyframes fadeItem {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Toast notification */
+.toast-box {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 999;
+    white-space: nowrap;
+    background: #1A1A2E;
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #fff;
+}
+
+.toast-box.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

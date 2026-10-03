@@ -1,0 +1,624 @@
+.payment-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    max-width: 1200px;
+    margin: 80px auto 0;
+    /* Agregamos 80px de margen superior */
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.payment-content {
+    flex: 1;
+    padding: 4rem;
+    background-color: rgb(246, 218, 11);
+    color: white;
+}
+
+.payment-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.payment-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100px;
+    height: 3px;
+    background-color: rgb(15, 46, 225);
+}
+
+.payment-highlight {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 2rem 0;
+}
+
+.orange-text {
+    color: rgb(15, 46, 225);
+    display: block;
+}
+
+.payment-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 80%;
+}
+
+.payment-methods {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: inline-flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.payment-methods img {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+}
+
+.payment-image {
+    flex: 1;
+    background: #f5f5f5;
+    position: relative;
+}
+
+.payment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.yape-floating {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .payment-section {
+        flex-direction: column;
+        border-radius: 15px;
+        margin-top: 40px;
+        /* Menos margen en móviles */
+    }
+
+    .payment-content {
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .payment-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .payment-description {
+        max-width: 100%;
+    }
+
+    .payment-methods {
+        justify-content: center;
+    }
+
+    .payment-highlight {
+        font-size: 2rem;
+    }
+}
+
+.porque-elegirnos {
+    padding: 50px 20px;
+    background-color: #f9fafb;
+    text-align: center;
+
+}
+
+.porque-elegirnos h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 60px;
+}
+
+.porque-elegirnos .features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.porque-elegirnos .feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 200px;
+}
+
+.porque-elegirnos .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.porque-elegirnos .icon img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #e1e5ea;
+    padding: 10px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.porque-elegirnos .icon img:hover {
+    transform: scale(1.1);
+}
+
+.porque-elegirnos h3 {
+    font-size: 1.2em;
+    color: rgb(222, 180, 27);
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.porque-elegirnos p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Seccion de viajes */
+
+
+.swiper-container {
+    width: 100%;
+    padding: 40px 20px;
+    overflow: hidden;
+    /* Oculta las tarjetas fuera de vista */
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide {
+    width: 980px;
+
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    visibility: visible;
+}
+
+.destination-image {
+    position: relative;
+    height: 260px;
+    overflow: hidden;
+}
+
+.destination-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destino-label {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgb(236, 201, 5);
+    color: white;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.destination-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.viaja-a {
+    color: #666;
+    font-size: 14px;
+}
+
+.city-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.rating {
+    color: rgb(225, 187, 19);
+    font-size: 16px;
+}
+
+.swiper-button-disabled {
+    display: none;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #1a73e8;
+    background: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Seccion de enco */
+
+.encomiendas-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(246, 218, 11);
+    color: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 1200px;
+    overflow: hidden;
+    position: relative;
+    gap: 2rem;
+}
+
+.encomiendas-content {
+    flex: 1;
+}
+
+.encomiendas-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.encomiendas-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.encomiendas-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.encomiendas-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.encomiendas-button {
+    background-color: #E31837;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.encomiendas-button:hover {
+    background-color: #ff1f41;
+    transform: translateY(-2px);
+}
+
+.encomiendas-image {
+    flex: 1;
+    max-width: 40%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* RESPONSIVE - Celulares */
+@media (max-width: 768px) {
+    .encomiendas-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .encomiendas-content {
+        width: 100%;
+    }
+
+    .encomiendas-heading {
+        font-size: 2rem;
+    }
+
+    .encomiendas-title {
+        font-size: 1.2rem;
+    }
+
+    .encomiendas-description {
+        font-size: 1rem;
+    }
+
+    .encomiendas-list {
+        text-align: left;
+        padding-left: 1.2rem;
+    }
+
+    .encomiendas-button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .encomiendas-image {
+        max-width: 90%;
+        margin-top: 1.5rem;
+    }
+}
+
+
+
+/* Relacionado al cuadro de busqueda */
+/* Estilos para el contenedor del carrusel */
+.carousel-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo de index traidos de footer */
+
+/* Estilos para el botón de WhatsApp */
+.back-to-top-whatsappp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+}
+
+.back-to-top-whatsappp:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.back-to-top-whatsappp i {
+    color: white;
+}
+
+.btn-lg-square {
+    border-radius: 50% !important;
+    width: 60px !important;
+    height: 60px !important;
+    padding: 0 !important;
+}
+
+
+/* ESTILOS PARA EL NUEVO FOOTER */
+.footer-container {
+    background-color: rgba(25, 25, 25, 0.97);
+    color: #f0f0f0;
+    font-family: 'Roboto', Arial, sans-serif;
+    padding: -1;
+    width: 100%;
+}
+
+.footer-main {
+    display: flex;
+    padding: 3rem 5%;
+    flex-wrap: wrap;
+}
+
+.footer-logo-section {
+    flex: 0 0 25%;
+    padding-right: 3rem;
+}
+
+.footer-logo {
+    max-width: 250px;
+    height: auto;
+    margin-bottom: 1.9rem;
+    transition: filter 0.3s ease;
+}
+
+.footer-logo:hover {
+    filter: brightness(1.2);
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #a0a0a0;
+    margin-bottom: 1.5rem;
+}
+
+/* Contenedor de información */
+.footer-info-container {
+    flex: 0 0 75%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Sección de contacto */
+.footer-contact {
+    flex: 0 0 30%;
+    padding-right: 2rem;
+}
+
+.footer-heading {
+    position: relative;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.7rem;
+    letter-spacing: 0.5px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: rgb(255, 238, 0);
+}
+
+.footer-contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-contact-list li {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #c0c0c0;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.footer-contact-list li:hover {
+    transform: translateX(5px);
+    color: #ffffff;
+}
+
+.contact-label {
+    font-weight: 500;
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+/* Sección de agencias */
+.footer-agencies {
+    flex: 0 0 70%;
+}
+
+.agencies-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.agency-column {
+    flex: 0 0 50%;
+}
+
+.agency-item {
+    position: relative;
+    padding: 0.5rem 0 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent;
+}
+
+.agency-item:hover {
+    color: #ffffff;
+    border-left-color: rgb(238, 203, 27);
+    padding-left: 1.2rem;
+    background-color: rgba(255, 0, 0, 0.05);
+}
+
+.agency-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgb(240, 229, 25);
+    transition: transform 0.2s;
+}
+
+.agency-item:hover::before {
+    transform: scale(1.2);
+}
+
+/* Sección inferior del footer */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 5%;
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #707070;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .footer-logo-section {
+        flex: 0 0 100%;
+        margin-bottom: 2rem;
+        padding-right: 0;
+    }
+
+    .footer-info-container {
+        flex: 0 0 100%;
+    }
+
+    .footer-contact {
+        flex: 0 0 100%;
+        margin-bottom: 2rem;
+        padding-right: 0;
+    }
+
+    .footer-agencies {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .agency-column {
+        flex: 0 0 100%;
+    }
+
+    .footer-main {
+        padding: 2rem 5%;
+    }
+}

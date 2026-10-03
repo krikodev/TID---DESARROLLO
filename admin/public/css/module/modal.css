@@ -1,0 +1,10 @@
+/* MODAL */
+.modal-header>h5 {
+    font-family: var(--fuente);
+    font-size: 15px;
+    color: var(--colorText)
+}
+
+.modal-footer {
+    margin-top: 1vw;
+}

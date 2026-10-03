@@ -1,0 +1,8 @@
+{
+    "require": {
+        "cboden/ratchet": "^0.4.4",
+        "ratchet/pawl": "^0.4.1",
+        "monolog/monolog": "^3.7",
+        "culqi/culqi-php": "^2.0"
+    }
+}

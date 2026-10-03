@@ -1,0 +1,273 @@
+:root {
+    --primary-color: #177fbb;
+    --primary-dark: #0a9cba;
+    --light-color: #f8f9fa;
+    --white: #ffffff;
+    --dark-color: #1a1a1a;
+    --text-color: #333;
+    --text-light: #666;
+    --accent: #2980b9;
+    --transition: all 0.3s ease;
+    --selva-verde: #0a8dca; 
+    --selva-lima: #1b65ba; 
+    --selva-oro: #FFCC00;   
+    --selva-tierra: #3E2723; 
+    --selva-fondo: #F4F7F1; 
+    --color-selva-oscuro: #1b5e20; 
+    --color-selva-claro: #4caf50;  
+    --color-selva-oro: #0a59a3;   
+    --color-texto-titulo: #263238; 
+    --color-texto-cuerpo: #546e7a;
+    --color-celeste-original: #078507; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Header Mejorado */
+.services-header {
+    background: linear-gradient(135deg, var(--primary-color), #177fbb);
+    color: var(--white);
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-header::before {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: var(--light-color);
+    clip-path: polygon(0 0, 100% 50%, 100% 100%, 0% 100%);
+}
+
+.services-header h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.services-header p {
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+    font-weight: 300;
+}
+
+/* Sección de Servicios */
+.passenger-service-section {
+    background-color: var(--selva-fondo);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+.main-title {
+    color: var(--selva-verde);
+}
+
+.text-highlight {
+    color: var(--selva-lima);
+}
+
+/* Contenedor de la Imagen Central */
+.main-service-image-container img {
+    border: 5px solid white;
+    box-shadow: 0 15px 35px rgba(11, 70, 25, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.main-service-image-container img:hover {
+    transform: scale(1.02);
+}
+
+.border-gold {
+    border-bottom: 6px solid var(--selva-oro) !important;
+}
+
+/* Iconos y Características */
+.feature-icon {
+    background-color: var(--selva-verde);
+    color: var(--selva-oro);
+    min-width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.1);
+}
+
+.feature-text h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--selva-tierra);
+    margin-bottom: 0.5rem;
+}
+
+.feature-text p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Animaciones simples */
+.animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .feature-item {
+        text-align: left !important;
+    }
+    .feature-item .d-flex {
+        flex-direction: row !important;
+    }
+    .feature-icon {
+        margin-right: 1rem !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* Sección de Logística Mejorada */
+.logistics-features {
+    background-color: #d3d00a;
+    overflow: hidden;
+}
+
+.subtitle {
+    color: var(--color-celeste-original);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.main-title {
+    color: var(--color-texto-titulo);
+    font-size: 2.5rem;
+    margin-top: 10px;
+}
+
+.title-divider {
+    width: 50px;
+    height: 3px;
+    background-color: var(--color-celeste-original);
+    margin-top: 15px;
+}
+
+/* Estilo para las cajas resaltantes */
+.feature-box {
+    padding: 25px;
+    border-radius: 20px; 
+    border: 2px solid var(--color-selva-oscuro); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    height: 100%; 
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    background-color: #ffffff;
+}
+
+.feature-icon-wrapper {
+    flex-shrink: 0;
+}
+
+.feature-content h4 {
+    margin-top: 0;
+    color: var(--color-selva-oscuro);
+    font-size: 1.2rem;
+}
+
+.feature-content p {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.icon-circle {
+    width: 65px;
+    height: 65px;
+    background-color: var(--color-celeste-original);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 5px 15px rgba(79, 195, 247, 0.3);
+    transition: all 0.3s ease;
+}
+
+.feature-box:hover .icon-circle {
+    background-color: var(--color-selva-oscuro); 
+    transform: scale(1.1);
+}
+
+.feature-content h4 {
+    color: var(--color-texto-titulo);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.feature-content p {
+    color: var(--color-texto-cuerpo);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Contenedor central */
+.central-image-container {
+    position: relative;
+    padding: 20px;
+}
+
+
+.map-bg-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 100%;
+    background-image: radial-gradient(#068a27 1px, transparent 1px);
+    background-size: 15px 15px;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+/* Responsividad */
+@media (max-width: 991px) {
+    .feature-box {
+        text-align: left !important;
+    }
+    .feature-box .d-flex {
+        flex-direction: row !important;
+    }
+    .feature-icon-wrapper {
+        margin-right: 1rem !important;
+        margin-left: 0 !important;
+    }
+}

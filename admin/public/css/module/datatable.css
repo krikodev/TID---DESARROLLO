@@ -1,0 +1,145 @@
+/* TABLE */
+.dataTables_wrapper>.dt-buttons {
+  margin-bottom: 3px;
+}
+
+.dataTables_wrapper>.dt-buttons>.dt-button,
+.dataTables_wrapper>.dt-buttons>.dt-button:hover {
+  border-radius: 5px;
+  padding: 0px;
+  border: 0px;
+}
+
+/*-- btn show rows*/
+.dataTables_wrapper>.dt-buttons>.buttons-page-length,
+.dataTables_wrapper>.dt-buttons>.buttons-page-length:hover,
+.dataTables_wrapper>.dt-buttons>.buttons-page-length:focus,
+.dataTables_wrapper>.dt-buttons>.buttons-page-length:active {
+  padding: 8px 8px !important;
+  background-color: #386dff !important;
+  font-family: var(--font-3) !important;
+  font-weight: var(--fontBold-3) !important;
+  color: white !important;
+  font-size: 12px !important;
+  border: 0px !important;
+}
+
+/* btn-show-rows children buttons */
+.dataTables_wrapper>.dt-buttons>.dt-button-collection>div>.button-page-length {
+  font-family: var(--fuente);
+  color: var(--colorText);
+  font-size: 12px;
+}
+
+.dataTables_wrapper>.dt-buttons>.buttons-colvis:hover {
+  padding: 8px 8px;
+  background-color: #386dff;
+  font-family: var(--fuente);
+  color: var(--colorText)
+}
+
+/*-- btn-visibilitu */
+.dataTables_wrapper>.dt-buttons>.buttons-colvis,
+.dataTables_wrapper>.dt-buttons>.buttons-colvis:hover,
+.dataTables_wrapper>.dt-buttons>.buttons-colvis:focus,
+.dataTables_wrapper>.dt-buttons>.buttons-colvis:active {
+  padding: 8px 8px !important;
+  background-color: #386dff !important;
+  font-family: var(--fuente) !important;
+  color: white !important;
+  font-size: 12px !important;
+  border: 0px !important;
+
+}
+
+/* btn-visibility children buttons */
+.dataTables_wrapper>.dt-buttons>.dt-button-collection>div>.buttons-columnVisibility>span {
+  font-family: var(--fuente);
+  color: var(--colorText);
+  font-size: 12px;
+}
+
+.dataTables_wrapper>.dt-buttons>.dt-button-collection>div>.buttons-columnVisibility:hover {
+  background-color: dodgerblue;
+}
+
+.dataTables_wrapper>.dt-buttons>.dt-button-collection>div>.buttons-columnVisibility:hover span {
+  background-color: dodgerblue;
+  color: var(--colorText) !important;
+}
+
+/* color arrow */
+.dataTables_wrapper>.dt-buttons>.buttons-page-length>.dt-down-arrow,
+.dataTables_wrapper>.dt-buttons>.buttons-colvis>.dt-down-arrow {
+  color: white;
+}
+
+/* TABLE */
+.table {
+  border-collapse: collapse;
+}
+
+.table>thead {
+  background-color: #fff !important;
+}
+
+.table th {
+  font-family: var(--fuente);
+  color: #212529;
+  font-size: 12px;
+  font-weight: 500 !important;
+  border-top: 0px !important;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table td {
+  font-family: var(--fuente);
+  font-size: 12px;
+}
+
+.dataTables_info {
+  font-family: var(--fuente);
+  font-size: 12px;
+}
+
+.dataTables_length>label {
+  font-family: var(--fuente);
+  font-size: 12px;
+}
+
+.dataTables_filter>label {
+  font-family: var(--fuente);
+  color: var(--colorText);
+  font-size: 12px;
+}
+
+.pagination .paginate_button a {
+  font-family: var(--fuente);
+  font-size: 11px;
+}
+
+.dataTables_empty {
+  font-family: var(--fuente);
+  color: var(--colorText);
+  transition: 0.5s;
+}
+
+/* BTN EXPORT DATATABLE */
+.btn_exportExcel {
+  background-color: #33b543;
+  margin-right: 70px;
+}
+
+.btn_exportCSV {
+  background-color: #33b543;
+}
+
+.btn_exportPDF {
+  background-color: #d11944;
+  margin-right: 140px;
+}
+
+.inputSearch {
+  font-family: var(--fuente);
+  font-size: 12px;
+}

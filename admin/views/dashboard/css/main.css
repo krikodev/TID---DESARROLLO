@@ -1,0 +1,44 @@
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #28a745;
+    /* Color del borde - cámbialo por el que prefieras */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    color: #28a745;
+    /* Color del ícono - cámbialo por el que prefieras */
+}
+
+.stats-type {
+    color: #6c757d;
+    /* Color del título - cámbialo por el que prefieras */
+    font-weight: 400;
+    font-size: 0.50rem;
+}
+
+.stats-figure {
+    color: #28a745;
+    /* Color del número - cámbialo por el que prefieras */
+}
+
+#grafico_meses {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+}
+
+.form-label,
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}

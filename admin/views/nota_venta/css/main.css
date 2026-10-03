@@ -1,0 +1,190 @@
+.btnColorViolet {
+    background-color: #844ae0 !important;
+    color: #ffff !important;
+    font-family: var(--fuente);
+    font-size: 12px !important;
+}
+
+.boldtxt {
+    font-weight: 800 !important;
+    color: #000 !important;
+}
+
+#productosTooltip {
+    position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    max-width: 300px;
+}
+
+.productos-tooltip-item {
+    padding: 5px 0;
+}
+
+.producto-nombre {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Fila seleccionada */
+#table_pagar_notas tbody {
+    cursor: pointer;
+}
+
+#table_pagar_notas tbody tr.selected {
+    background-color: #e3f2fd !important;
+    border-left: 4px solid #2196F3 !important;
+    color: #000;
+}
+
+#table_pagar_notas tbody tr.selected td {
+    font-weight: 500;
+}
+
+/* Hover sobre fila seleccionada */
+#table_pagar_notas tbody tr.selected:hover {
+    background-color: #bbdefb !important;
+}
+
+/* SELECT2 - Asegurar que se vea correctamente */
+.select2-container {
+    z-index: 10000 !important;
+}
+
+.select2-container--open {
+    z-index: 10001 !important;
+}
+
+.select2-dropdown {
+    z-index: 10001 !important;
+}
+
+/* Select2 dentro de modales */
+.modal-open .select2-container {
+    z-index: 10055 !important;
+}
+
+.modal-open .select2-dropdown {
+    z-index: 10056 !important;
+}
+
+/* ESTILOS DE RADIO */
+.radio-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.radios {
+    position: relative !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    border-radius: 9px !important;
+    background-color: #495057 !important;
+    box-sizing: border-box !important;
+    padding: 0.25rem !important;
+    width: 340px !important;
+    font-size: 14px !important;
+    height: 46px !important;
+    transition: clip-path 0.3s ease !important;
+}
+
+.radios .radiol {
+    flex: 1 1 auto !important;
+    text-align: center !important;
+    display: flex !important;
+    /* Mantener */
+}
+
+.radios .radiol input {
+    display: none !important;
+}
+
+.radios .radiol .radio-item {
+    display: flex !important;
+    cursor: pointer !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 9px !important;
+    border: none !important;
+    padding: 0.6rem 0 !important;
+    /* RESTAURADO */
+    width: 100% !important;
+    height: 100% !important;
+    /* AGREGADO - esto es clave */
+    color: #c2c1be !important;
+    transition: background-color 0.5s ease, font-weight 0.5s ease !important;
+}
+
+.radios .radiol input:checked+.radio-item {
+    background-color: #717686 !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+}
+
+.btn_pagar_notas {
+    background-color: rgb(247, 183, 59);
+    color: #fff;
+    border: none;
+}
+
+.btn_pagar_notas:hover {
+    background-color: rgb(255, 166, 0);
+    color: #fff;
+}
+
+.btn_pagar_notas:focus {
+    background-color: rgb(250, 183, 59);
+    color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(250, 183, 59, 0.3);
+}
+
+.btn_pagar_notas:active {
+    background-color: rgb(255, 166, 0);
+    color: #fff;
+}
+
+.selectize-dropdown-content .option.highlight {
+    background-color: #8d3dc2 !important;
+    color: black !important;
+}
+
+.selectize-dropdown-content .option.active {
+    background-color: #4ca3af !important;
+    color: white !important;
+}
+
+.badge {
+    white-space: nowrap;
+    /* Evita el desbordamiento de texto */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Muestra "..." si el texto es demasiado largo */
+}
+
+.selectize-control.single .selectize-input {
+    border-radius: 0.375rem !important;
+    /* Bordes redondeados */
+    height: 34px !important;
+    /* Ajusta la altura para que coincida con los otros inputs */
+    border-color: #ced4da !important;
+    /* Color de borde para uniformidad */
+    padding: 0.375rem 0.75rem !important;
+    /* Espaciado interno */
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1) !important;
+    /* Sombra ligera */
+}
+
+.selectize-control.single .selectize-input:focus {
+    border-color: #80bdff !important;
+    /* Color de borde al hacer foco */
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) !important;
+    /* Efecto de foco */
+    outline: none !important;
+}

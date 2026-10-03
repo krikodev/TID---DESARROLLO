@@ -1,0 +1,17 @@
+2026-02-25 13:18:07 - Resultado: null
+2026-02-25 13:25:28 - Resultado: null
+2026-02-25 13:26:22 - Resultado: []
+2026-02-25 13:28:32 - Resultado: [{"id_programacion":21,"id_terminal_origen":1,"id_terminal_destino":2,"id_vehiculo":5,"id_conductor":30240,"fecha_salida":"2026-02-25","hora_salida":"08:28:00","id_tp_servicio_pasaje":1,"precio_primer_piso":"14.00","precio_segundo_piso":"15.00","estado":1,"liquidado":0,"liquidacion":0,"fecha_liquidacion":null,"id_sesionpersonal":null,"comision_v":null,"tipo_programacion":1},{"id_programacion":22,"id_terminal_origen":1,"id_terminal_destino":2,"id_vehiculo":3,"id_conductor":30241,"fecha_salida":"2026-02-25","hora_salida":"11:57:00","id_tp_servicio_pasaje":1,"precio_primer_piso":"14.00","precio_segundo_piso":"15.00","estado":1,"liquidado":0,"liquidacion":0,"fecha_liquidacion":null,"id_sesionpersonal":null,"comision_v":null,"tipo_programacion":1}]
+2026-02-25 13:35:29 - Resultado: null
+2026-02-25 13:52:21 - Resultado: null
+2026-02-25 13:52:26 - Resultado: null
+2026-02-25 13:52:48 - Resultado: null
+2026-02-25 13:54:27 - Resultado: null
+2026-02-25 13:58:40 - Resultado: null
+2026-02-25 13:59:12 - Resultado: null
+2026-02-25 14:00:32 - Resultado: null
+2026-02-25 14:00:35 - Resultado: null
+2026-02-25 14:00:46 - Resultado: null
+2026-03-04 17:47:52 - Resultado: null
+2026-09-22 11:27:45 - Resultado: null
+2026-09-22 11:38:08 - Resultado: null

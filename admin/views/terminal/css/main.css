@@ -1,0 +1,24 @@
+.img_logo {
+    background-position: center;
+    background-size: contain;
+    background-clip: border-box;
+    background-repeat: no-repeat;
+    background-image: url("../../../public/image/upload/notupload_img.png");
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+}
+
+#link_siteweb {
+    position: cursor;
+}
+
+.linkopen_upload,
+.linkopen_upload:hover {
+    background-color: coral !important;
+    color: white !important;
+    padding: 8px !important;
+    margin: 0px !important;
+    border-radius: 100% !important;
+    font-size: 12px;
+}

@@ -1,0 +1,265 @@
+/*Leyenda*/
+.vehiculo_segundoPiso {
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.content-vehiculo .info-asientos {
+    margin-top: 10px;
+
+}
+
+.content-vehiculo .info-asientos .leyenda-asientos .title-asiento h6 {
+    color: rgb(110, 110, 110);
+    border: 1px solid #C3C3C3;
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.content-vehiculo .info-asientos .asiSelecion {
+    margin-top: 20px;
+}
+
+.content-vehiculo .info-asientos .asiSelecion .title-asiSelecion h6 {
+    color: rgb(110, 110, 110);
+    border: 1px solid #C3C3C3;
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.content-vehiculo .info-asientos .asiSelecion #tex-sub {
+    padding: 15px;
+    border: 1px solid #C3C3C3;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.content-vehiculo .info-asientos .asiSelecion #tex-sub p {
+    color: rgb(173, 173, 173);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+.content-vehiculo .info-asientos .asiSelecion .datos-asi {
+    padding: 15px;
+    border: 1px solid #C3C3C3;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.content-vehiculo .info-asientos .asiSelecion .datos-asi p {
+    color: gray;
+    font-size: 14px;
+}
+
+.content-vehiculo .info-asientos .asiSelecion .datos-asi .btn_continuar {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    background-color: #3752ff;
+    color: white;
+    font-size: 13px;
+    border-radius: 10px;
+    border: 2px solid #3752ff;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.content-vehiculo .info-asientos .asiSelecion .datos-asi .btn_continuar:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.content-vehiculo .info-asientos .leyenda-asientos .contendor-icon {
+    border: 1px solid #C3C3C3;
+    border-radius: 0px 0px 10px 10px;
+    padding: 10px;
+}
+
+.content-vehiculo .info-asientos .leyenda-asientos .contendor-icon .d-asiento p {
+    color: gray;
+    font-size: 13px;
+}
+
+.content-vehiculo .leyenda-asiento .contendor-icon p {
+    color: gray;
+}
+
+#botonComprar {}
+
+.content-vehiculo .row .col-lg-4 .continue .boton-comprar {
+    background-color: rgb(49, 19, 156);
+    padding: 10px 35px;
+    border-radius: 10px;
+    color: white;
+
+    width: 100%;
+    border: none;
+
+}
+
+
+.btnColorGray {
+    background-color: rgb(78, 78, 78) !important;
+    color: #ffff !important;
+    font-size: var(--fuente);
+}
+
+.btnColorRed {
+    background-color: rgb(233, 77, 77) !important;
+    color: #ffff !important;
+    font-size: var(--fuente);
+}
+
+.btnColorViolet {
+    background-color: #844ae0 !important;
+    color: #ffff !important;
+    font-family: var(--fuente);
+    font-size: 12px !important;
+}
+
+.btnPostponer {
+    background-color: #2a9d8f !important;
+    color: #ffff !important;
+    font-size: var(--fuente);
+}
+
+.btnAnular {
+    background-color: #f0973d !important;
+    color: #ffff !important;
+    font-size: var(--fuente);
+}
+
+.parent_vehiculo {
+    width: 300px !important;
+    background-color: white;
+    border-top: 0px;
+    border-left: 2px solid #3752ff !important;
+    border-right: 2px solid #3752ff !important;
+    border-bottom: 0px;
+    user-select: none;
+    touch-action: none;
+    box-sizing: border-box;
+    transition: 0.2s ease-in-out;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.objeto {
+    width: auto;
+    height: auto;
+    touch-action: none;
+    user-select: none;
+    text-align: center;
+}
+
+.vehiculo_segundoPiso {
+    border-top: 2px solid #3752ff !important;
+    border-bottom: 2px solid #3752ff !important;
+}
+
+.vehiculo {
+    background-color: rgb(255, 255, 255);
+}
+
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+  }
+  
+  .step {
+    position: relative;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .step-icon {
+    background-color: #f8f9fa;
+    border: 2px solid #e9ecef;
+    width: auto;
+    height: auto;
+    border-radius: 25px;
+    color: #6c757d;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 8px 16px;
+    min-width: 120px;
+  }
+  
+  .step-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .step-icon i {
+    font-size: 16px;
+  }
+  
+  .step-icon:hover {
+    background-color: #e9ecef;
+    transform: translateY(-3px);
+  }
+  
+  .step-icon.active {
+    background-color: #007bff;
+    border-color: #ffffff;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.25);
+  }
+  
+  .step-icon.active .step-name {
+    color: #fff;
+  }
+  
+  .step-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    transition: color 0.3s ease;
+    margin: 0;
+  }
+  
+  .line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e9ecef;
+    transition: background-color 0.3s ease;
+    margin: 0 10px;
+  }
+  
+  .line.active {
+    background-color: #007bff;
+  }
+  
+  @media (max-width: 767.98px) {
+    .stepper {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .step {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    .step-icon {
+      min-width: auto;
+      width: 100%;
+      justify-content: flex-start;
+    }
+  
+    .line {
+      display: none;
+    }
+  }

@@ -1,0 +1,1080 @@
+window.jsPDF = window.jspdf.jsPDF;
+const _URL_ = document.querySelector("#url").value;
+const DateTime = luxon.DateTime;
+DateTime.now().setZone('America/Lima')
+class PDF {
+    __contruct() {
+    }
+    generarTicketIngreso80(data) {
+        let fecha_emision = DateTime.fromSQL(data["vt_fecha_emision"]);
+        let barcode = document.getElementById("barcode");
+        JsBarcode("#barcode", data["cli_num_docu"] + data["dt_placa"], {
+            width: 20,
+            height: 50,
+            displayValue: false
+        });
+        let heightHoja = (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") ? 125 : 155;
+        let doc = new jsPDF("P", "mm", [80, heightHoja]);
+        doc.setFont("arial")
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+
+        // Datos Empresa --> HEADER
+        doc.addImage(_URL_ + data["emp_logo"], "png", ((widthPage / 2) / 2), 5, 35, 20);
+        doc.setFontSize(8);
+        doc.text(data["emp_razon_social"], (widthPage / 2), 30, { align: "center" });
+        doc.text("RUC: " + data["emp_ruc"], (widthPage / 2), 33, { align: "center" });
+        doc.text(data["suc_direccion"].toUpperCase(), (widthPage / 2), 36, { align: "center" });
+        doc.text(data["suc_depa"] + "-" + data["suc_provi"] + "-" + data["suc_distri"], (widthPage / 2), 39, { align: "center" });
+        doc.text("Estaci.: " + data["estaci_descripcion"], (widthPage / 2), 42, { align: "center" });
+        doc.text(data["suc_email"], (widthPage / 2), 45, { align: "center" });
+        doc.text(data["suc_celular"], (widthPage / 2), 49, { align: "center" });
+
+        // Número de ticket  
+        if (data["vt_estado"] == "c") {
+            doc.setFontSize(11);
+            doc.text(data["vt_tp_comprobante"], (widthPage / 2), 55, { align: "center" });
+            doc.text(data["vt_num_docu"], (widthPage / 2), 60, { align: "center" });
+        } else if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "ABONADO") {
+            doc.text("----------------------- PAGO PENDIENTE -----------------------", (widthPage / 2), 57, { align: "center" });
+        }
+
+        // Ticket Anulado
+        if (data["vt_estado"] == "a") {
+            doc.setFontSize(48);
+            doc.setTextColor("#cf173b")
+            doc.text("ANULADO", 5, (heightPage / 2) + 10, null, 30);
+        }
+
+        // Datos del ticket --> BODY
+        if (data["vt_tp_cliente"] == "NORMAL") {// Cliente normal
+            if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") { //INGRESO
+                doc.setFontSize(7);
+                doc.text("----------------------------------------------------------------------------------", 5, 52);
+                doc.setFontSize(9);
+                doc.text("INGRESO", (widthPage / 2), 56, { align: "center" });
+                doc.setFontSize(7);
+                doc.text("----------------------------------------------------------------------------------", 5, 60);
+                // Datos del Cliente
+                // Column1
+                doc.text("F. Emisión: ", 5, 63);
+                doc.text("T. Cliente: ", 5, 66);
+                doc.text("Cliente: ", 5, 69);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 72);
+                doc.text("T. Vehículo: ", 5, 75);
+                doc.text("Placa: ", 5, 78);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 63);
+                doc.text(data["vt_tp_cliente"], 20, 66);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 69);
+                doc.text(data["cli_num_docu"], 20, 72);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 75);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 78);
+
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 83, 12, 12)
+                doc.setFontSize(19);
+                doc.text(data["dt_num_area"], 43, 91);
+                doc.setFontSize(7);
+
+                // Datos Venta
+                //Column1
+                doc.text("F/H Ingreso: ", 5, 81);
+                doc.text("Vendedor: ", 5, 98);
+                // Column2
+                doc.text(data["dt_fecha_inicio"], 20, 81);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 98);
+                doc.text("-------------------------------------------------------------------------------------", 5, 102);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 102, (widthPage / 2), 15)
+            }
+            else {    //SALIDA
+                doc.setTextColor("#000005")
+                doc.setFontSize(7);
+                doc.text("-------------------------------------------------------------------------------------", 5, 63);
+                doc.setFontSize(9);
+                doc.text("SALIDA", (widthPage / 2), 67, { align: "center" });
+                doc.setFontSize(7);
+                doc.text("-------------------------------------------------------------------------------------", 5, 71);
+                // DATOS DEL CLIENTE
+                // Column1
+                doc.text("F. Emisión: ", 5, 74);
+                doc.text("T. Cliente: ", 5, 77);
+                doc.text("Cliente: ", 5, 80);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+                doc.text("T. Vehículo: ", 5, 86);
+                doc.text("Placa: ", 5, 89);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+                doc.text(data["vt_tp_cliente"], 20, 77);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+                doc.text(data["cli_num_docu"], 20, 83);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+                // Area de estacionamiento
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+                doc.setFontSize(20);
+                doc.text(data["dt_num_area"], 43, 99);
+                doc.setFontSize(7);
+
+                // Datos Venta
+                doc.text("F/H Ingreso: ", 5, 106);
+                doc.text("F/H Salida: ", 5, 109);
+                doc.text("T. Total: ", 5, 112);
+                doc.text("Costo Noche: ", 5, 115);
+                doc.text("Descuento: ", 5, 118);
+                doc.text("TOTAL: ", 5, 121);
+                doc.text("T. Pago: ", 5, 124);
+                doc.text("Vendedor: ", 5, 127);
+
+                doc.text(data["dt_fecha_inicio"], 20, 106);
+                doc.text(data["dt_fecha_fin"], 20, 109);
+                doc.text(data["dt_tiempo_total"], 20, 112);
+                doc.text(`S/ ${data["dt_precio_noche"]}`, 20, 115);
+                doc.text(`S/ ${data["dt_descuento"] == null ? "S/ 0.0" : data["dt_descuento"]}`, 20, 118);
+                doc.text(`S/ ${data["vt_total"]}`, 20, 121);
+                doc.text(data["vt_tp_pago"], 20, 124);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 127);
+                doc.text("-------------------------------------------------------------------------------------", 5, 130);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 131, (widthPage / 2), 15)
+            }
+        } else { // Cliente abonado
+            doc.setTextColor("#000005")
+            doc.setFontSize(7);
+            doc.text("-------------------------------------------------------------------------------------", 5, 63);
+            doc.setFontSize(9);
+            doc.text("TICKET ABONADO", (widthPage / 2), 67, { align: "center" });
+            doc.setFontSize(7);
+            doc.text("-------------------------------------------------------------------------------------", 5, 71);
+            // DATOS DEL CLIENTE
+            // Column1
+            doc.text("F. Emisión: ", 5, 74);
+            doc.text("T. Cliente: ", 5, 77);
+            doc.text("Cliente: ", 5, 80);
+            doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+            doc.text("T. Vehículo: ", 5, 86);
+            doc.text("Placa: ", 5, 89);
+            // Column2
+            doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+            doc.text(data["vt_tp_cliente"], 20, 77);
+            doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+            doc.text(data["cli_num_docu"], 20, 83);
+            doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+            let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+            let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+            let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+            doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+            // Area de estacionamiento
+            doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+            doc.setFontSize(20);
+            doc.text(data["dt_num_area"], 43, 99);
+            doc.setFontSize(7);
+
+            // Datos Venta
+            doc.text("F/H Ingreso: ", 5, 106);
+            doc.text("F/H Salida: ", 5, 109);
+            doc.text("TOTAL: ", 5, 112);
+            doc.text("T. Pago: ", 5, 115);
+            doc.text("Estado: ", 5, 118);
+            doc.text("Vendedor: ", 5, 121);
+
+            doc.text(data["dt_fecha_inicio"], 20, 106);
+            doc.text(data["dt_fecha_fin"], 20, 109);
+            doc.text(`S/ ${data["vt_total"]}`, 20, 112);
+            doc.text(data["vt_estado"] == "c" ? data["vt_tp_pago"].toUpperCase() : "NINGUNO", 20, 115);
+            doc.text(data["vt_estado"] == "c" ? "CANCELADO" : "PENDIENTE", 20, 118);
+            doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 121);
+            doc.text("-------------------------------------------------------------------------------------", 5, 124);
+            doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 125, (widthPage / 2), 15)
+
+            doc.setFontSize(6);
+            doc.text("Es muy importante que porte el ticket para el ingreso y salida del vehículo", 8, 145);
+        }
+
+        return doc.output('datauristring');
+    }
+    generarTicketIngreso58(data) {
+        let fecha_emision = DateTime.fromSQL(data["vt_fecha_emision"]);
+        let barcode = document.getElementById("barcode");
+        JsBarcode("#barcode", data["cli_num_docu"] + data["dt_placa"], {
+            width: 20,
+            height: 50,
+            displayValue: false
+        });
+        let heightHoja = (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") ? 125 : 155;
+        let doc = new jsPDF("P", "mm", [58, heightHoja]);
+        doc.setFont("arial")
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+
+        // Datos Empresa --> HEADER
+        doc.addImage(_URL_ + data["emp_logo"], "png", ((widthPage / 2) / 2), 5, 35, 20);
+        doc.setFontSize(6);
+        doc.text(data["emp_razon_social"], (widthPage / 2), 30, { align: "center" });
+        doc.text("RUC: " + data["emp_ruc"], (widthPage / 2), 33, { align: "center" });
+        doc.text(data["suc_direccion"].toUpperCase(), (widthPage / 2), 36, { align: "center" });
+        doc.text(data["suc_depa"] + "-" + data["suc_provi"] + "-" + data["suc_distri"], (widthPage / 2), 39, { align: "center" });
+        doc.text("Estaci.: " + data["estaci_descripcion"], (widthPage / 2), 42, { align: "center" });
+        doc.text(data["suc_email"], (widthPage / 2), 45, { align: "center" });
+        doc.text(data["suc_celular"], (widthPage / 2), 49, { align: "center" });
+
+        // Número de ticket  
+        if (data["vt_estado"] == "c") {
+            doc.setFontSize(9);
+            doc.text(data["vt_tp_comprobante"], (widthPage / 2), 55, { align: "center" });
+            doc.text(data["vt_num_docu"], (widthPage / 2), 60, { align: "center" });
+        } else if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "ABONADO") {
+            doc.setFontSize(9);
+            doc.text("------- PAGO PENDIENTE --------", (widthPage / 2), 57, { align: "center" });
+        }
+
+        // Ticket Anulado
+        if (data["vt_estado"] == "a") {
+            doc.setFontSize(48);
+            doc.setTextColor("#cf173b")
+            doc.text("ANULADO", 5, (heightPage / 2) + 10, null, 30);
+        }
+
+        // Datos del ticket --> BODY
+        if (data["vt_tp_cliente"] == "NORMAL") {// Cliente normal
+            if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") { //INGRESO
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 52);
+                doc.setFontSize(9);
+                doc.text("INGRESO", (widthPage / 2), 56, { align: "center" });
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 60);
+                // Datos del Cliente
+                // Column1
+                doc.text("F. Emisión: ", 5, 63);
+                doc.text("T. Cliente: ", 5, 66);
+                doc.text("Cliente: ", 5, 69);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 72);
+                doc.text("T. Vehículo: ", 5, 75);
+                doc.text("Placa: ", 5, 78);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 63);
+                doc.text(data["vt_tp_cliente"], 20, 66);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 69);
+                doc.text(data["cli_num_docu"], 20, 72);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 75);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 78);
+
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 83, 12, 12)
+                doc.setFontSize(18);
+                doc.text(data["dt_num_area"], 38, 91);
+                doc.setFontSize(6);
+
+                // Datos Venta
+                //Column1
+                doc.text("F/H Ingreso: ", 5, 81);
+                doc.text("Vendedor: ", 5, 98);
+                // Column2
+                doc.text(data["dt_fecha_inicio"], 20, 81);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 98);
+                doc.text("------------------------------------------------------------------", 5, 102);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 102, (widthPage / 2), 15)
+            }
+            else {    //SALIDA
+                doc.setTextColor("#000005")
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 63);
+                doc.setFontSize(9);
+                doc.text("SALIDA", (widthPage / 2), 67, { align: "center" });
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 71);
+                // DATOS DEL CLIENTE
+                // Column1
+                doc.text("F. Emisión: ", 5, 74);
+                doc.text("T. Cliente: ", 5, 77);
+                doc.text("Cliente: ", 5, 80);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+                doc.text("T. Vehículo: ", 5, 86);
+                doc.text("Placa: ", 5, 89);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+                doc.text(data["vt_tp_cliente"], 20, 77);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+                doc.text(data["cli_num_docu"], 20, 83);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+                // Area de estacionamiento
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+                doc.setFontSize(18);
+                doc.text(data["dt_num_area"], 38, 99);
+                doc.setFontSize(6);
+
+                // Datos Venta
+                doc.text("F/H Ingreso: ", 5, 106);
+                doc.text("F/H Salida: ", 5, 109);
+                doc.text("T. Total: ", 5, 112);
+                doc.text("Costo Noche: ", 5, 115);
+                doc.text("Descuento: ", 5, 118);
+                doc.text("TOTAL: ", 5, 121);
+                doc.text("T. Pago: ", 5, 124);
+                doc.text("Vendedor: ", 5, 127);
+
+                doc.text(data["dt_fecha_inicio"], 20, 106);
+                doc.text(data["dt_fecha_fin"], 20, 109);
+                doc.text(data["dt_tiempo_total"], 20, 112);
+                doc.text(`S/ ${data["dt_precio_noche"]}`, 20, 115);
+                doc.text(`S/ ${data["dt_descuento"] == null ? "S/ 0.0" : data["dt_descuento"]}`, 20, 118);
+                doc.text(`S/ ${data["vt_total"]}`, 20, 121);
+                doc.text(data["vt_tp_pago"], 20, 124);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 127);
+                doc.text("------------------------------------------------------------------", 5, 130);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 131, (widthPage / 2), 15)
+            }
+        } else { // Cliente abonado
+            doc.setTextColor("#000005")
+            doc.setFontSize(6);
+            doc.text("------------------------------------------------------------------", 5, 63);
+            doc.setFontSize(9);
+            doc.text("TICKET ABONADO", (widthPage / 2), 67, { align: "center" });
+            doc.setFontSize(6);
+            doc.text("------------------------------------------------------------------", 5, 71);
+            // DATOS DEL CLIENTE
+            // Column1
+            doc.text("F. Emisión: ", 5, 74);
+            doc.text("T. Cliente: ", 5, 77);
+            doc.text("Cliente: ", 5, 80);
+            doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+            doc.text("T. Vehículo: ", 5, 86);
+            doc.text("Placa: ", 5, 89);
+            // Column2
+            doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+            doc.text(data["vt_tp_cliente"], 20, 77);
+            doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+            doc.text(data["cli_num_docu"], 20, 83);
+            doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+            let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+            let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+            let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+            doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+            // Area de estacionamiento
+            doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+            doc.setFontSize(18);
+            doc.text(data["dt_num_area"], 38, 99);
+            doc.setFontSize(6);
+
+            // Datos Venta
+            doc.text("F/H Ingreso: ", 5, 106);
+            doc.text("F/H Salida: ", 5, 109);
+            doc.text("TOTAL: ", 5, 112);
+            doc.text("T. Pago: ", 5, 115);
+            doc.text("Estado: ", 5, 118);
+            doc.text("Vendedor: ", 5, 121);
+
+            doc.text(data["dt_fecha_inicio"], 20, 106);
+            doc.text(data["dt_fecha_fin"], 20, 109);
+            doc.text(`S/ ${data["vt_total"]}`, 20, 112);
+            doc.text(data["vt_estado"] == "c" ? data["vt_tp_pago"].toUpperCase() : "NINGUNO", 20, 115);
+            doc.text(data["vt_estado"] == "c" ? "CANCELADO" : "PENDIENTE", 20, 118);
+            doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 121);
+            doc.text("------------------------------------------------------------------", 5, 124);
+            doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 125, (widthPage / 2), 15)
+
+            doc.setFontSize(4.5);
+            doc.text("Es muy importante que porte el ticket para el ingreso y salida del vehículo", 5, 145);
+        }
+
+        return doc.output('datauristring');
+    }
+    generarTicketIngreso57(data) {
+        let fecha_emision = DateTime.fromSQL(data["vt_fecha_emision"]);
+        let barcode = document.getElementById("barcode");
+        JsBarcode("#barcode", data["cli_num_docu"] + data["dt_placa"], {
+            width: 20,
+            height: 50,
+            displayValue: false
+        });
+        let heightHoja = (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") ? 125 : 155;
+        let doc = new jsPDF("P", "mm", [57, heightHoja]);
+        doc.setFont("arial")
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+
+        // Datos Empresa --> HEADER
+        doc.addImage(_URL_ + data["emp_logo"], "png", ((widthPage / 2) / 2), 5, 35, 20);
+        doc.setFontSize(6);
+        doc.text(data["emp_razon_social"], (widthPage / 2), 30, { align: "center" });
+        doc.text("RUC: " + data["emp_ruc"], (widthPage / 2), 33, { align: "center" });
+        doc.text(data["suc_direccion"].toUpperCase(), (widthPage / 2), 36, { align: "center" });
+        doc.text(data["suc_depa"] + "-" + data["suc_provi"] + "-" + data["suc_distri"], (widthPage / 2), 39, { align: "center" });
+        doc.text("Estaci.: " + data["estaci_descripcion"], (widthPage / 2), 42, { align: "center" });
+        doc.text(data["suc_email"], (widthPage / 2), 45, { align: "center" });
+        doc.text(data["suc_celular"], (widthPage / 2), 49, { align: "center" });
+
+        // Número de ticket  
+        if (data["vt_estado"] == "c") {
+            doc.setFontSize(9);
+            doc.text(data["vt_tp_comprobante"], (widthPage / 2), 55, { align: "center" });
+            doc.text(data["vt_num_docu"], (widthPage / 2), 60, { align: "center" });
+        } else if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "ABONADO") {
+            doc.setFontSize(9);
+            doc.text("------- PAGO PENDIENTE --------", (widthPage / 2), 57, { align: "center" });
+        }
+
+        // Ticket Anulado
+        if (data["vt_estado"] == "a") {
+            doc.setFontSize(48);
+            doc.setTextColor("#cf173b")
+            doc.text("ANULADO", 5, (heightPage / 2) + 10, null, 30);
+        }
+
+        // Datos del ticket --> BODY
+        if (data["vt_tp_cliente"] == "NORMAL") {// Cliente normal
+            if (data["vt_estado"] == "p" && data["vt_tp_cliente"] == "NORMAL") { //INGRESO
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 52);
+                doc.setFontSize(9);
+                doc.text("INGRESO", (widthPage / 2), 56, { align: "center" });
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 60);
+                // Datos del Cliente
+                // Column1
+                doc.text("F. Emisión: ", 5, 63);
+                doc.text("T. Cliente: ", 5, 66);
+                doc.text("Cliente: ", 5, 69);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 72);
+                doc.text("T. Vehículo: ", 5, 75);
+                doc.text("Placa: ", 5, 78);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 63);
+                doc.text(data["vt_tp_cliente"], 20, 66);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 69);
+                doc.text(data["cli_num_docu"], 20, 72);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 75);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 78);
+
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 83, 12, 12)
+                doc.setFontSize(18);
+                doc.text(data["dt_num_area"], 38, 91);
+                doc.setFontSize(6);
+
+                // Datos Venta
+                //Column1
+                doc.text("F/H Ingreso: ", 5, 81);
+                doc.text("Vendedor: ", 5, 98);
+                // Column2
+                doc.text(data["dt_fecha_inicio"], 20, 81);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 98);
+                doc.text("------------------------------------------------------------------", 5, 102);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 102, (widthPage / 2), 15)
+            }
+            else {    //SALIDA
+                doc.setTextColor("#000005")
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 63);
+                doc.setFontSize(9);
+                doc.text("SALIDA", (widthPage / 2), 67, { align: "center" });
+                doc.setFontSize(6);
+                doc.text("------------------------------------------------------------------", 5, 71);
+                // DATOS DEL CLIENTE
+                // Column1
+                doc.text("F. Emisión: ", 5, 74);
+                doc.text("T. Cliente: ", 5, 77);
+                doc.text("Cliente: ", 5, 80);
+                doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+                doc.text("T. Vehículo: ", 5, 86);
+                doc.text("Placa: ", 5, 89);
+                // Column2
+                doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+                doc.text(data["vt_tp_cliente"], 20, 77);
+                doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+                doc.text(data["cli_num_docu"], 20, 83);
+                doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+                let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+                let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+                let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+                doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+                // Area de estacionamiento
+                doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+                doc.setFontSize(18);
+                doc.text(data["dt_num_area"], 38, 99);
+                doc.setFontSize(6);
+
+                // Datos Venta
+                doc.text("F/H Ingreso: ", 5, 106);
+                doc.text("F/H Salida: ", 5, 109);
+                doc.text("T. Total: ", 5, 112);
+                doc.text("Costo Noche: ", 5, 115);
+                doc.text("Descuento: ", 5, 118);
+                doc.text("TOTAL: ", 5, 121);
+                doc.text("T. Pago: ", 5, 124);
+                doc.text("Vendedor: ", 5, 127);
+
+                doc.text(data["dt_fecha_inicio"], 20, 106);
+                doc.text(data["dt_fecha_fin"], 20, 109);
+                doc.text(data["dt_tiempo_total"], 20, 112);
+                doc.text(`S/ ${data["dt_precio_noche"]}`, 20, 115);
+                doc.text(`S/ ${data["dt_descuento"] == null ? "S/ 0.0" : data["dt_descuento"]}`, 20, 118);
+                doc.text(`S/ ${data["vt_total"]}`, 20, 121);
+                doc.text(data["vt_tp_pago"], 20, 124);
+                doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 127);
+                doc.text("------------------------------------------------------------------", 5, 130);
+                doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 131, (widthPage / 2), 15)
+            }
+        } else { // Cliente abonado
+            doc.setTextColor("#000005")
+            doc.setFontSize(6);
+            doc.text("------------------------------------------------------------------", 5, 63);
+            doc.setFontSize(9);
+            doc.text("TICKET ABONADO", (widthPage / 2), 67, { align: "center" });
+            doc.setFontSize(6);
+            doc.text("------------------------------------------------------------------", 5, 71);
+            // DATOS DEL CLIENTE
+            // Column1
+            doc.text("F. Emisión: ", 5, 74);
+            doc.text("T. Cliente: ", 5, 77);
+            doc.text("Cliente: ", 5, 80);
+            doc.text(data["cli_tp_docu"] + ": ", 5, 83);
+            doc.text("T. Vehículo: ", 5, 86);
+            doc.text("Placa: ", 5, 89);
+            // Column2
+            doc.text((fecha_emision.c.year + "-" + fecha_emision.c.month + "-" + fecha_emision.c.day), 20, 74);
+            doc.text(data["vt_tp_cliente"], 20, 77);
+            doc.text(data["cli_razon_social"] ? data["cli_razon_social"] : data["cli_nombres"] + " " + data["cli_apellidos"], 20, 80);
+            doc.text(data["cli_num_docu"], 20, 83);
+            doc.text(data["dt_tp_vehiculo"].toUpperCase(), 20, 86);
+            let marca = data["dt_marca"] ? " / " + data["dt_marca"] : "";
+            let modelo = data["dt_modelo"] ? " / " + data["dt_modelo"] : "";
+            let color = data["dt_color"] ? " / " + data["dt_color"] : "";
+            doc.text(data["dt_placa"] + marca + modelo + color, 20, 89);
+            // Area de estacionamiento
+            doc.addImage(_URL_ + "public/image/ticket/cars.png", "png", ((widthPage / 2) / 2), 91, 12, 12)
+            doc.setFontSize(18);
+            doc.text(data["dt_num_area"], 38, 99);
+            doc.setFontSize(6);
+
+            // Datos Venta
+            doc.text("F/H Ingreso: ", 5, 106);
+            doc.text("F/H Salida: ", 5, 109);
+            doc.text("TOTAL: ", 5, 112);
+            doc.text("T. Pago: ", 5, 115);
+            doc.text("Estado: ", 5, 118);
+            doc.text("Vendedor: ", 5, 121);
+
+            doc.text(data["dt_fecha_inicio"], 20, 106);
+            doc.text(data["dt_fecha_fin"], 20, 109);
+            doc.text(`S/ ${data["vt_total"]}`, 20, 112);
+            doc.text(data["vt_estado"] == "c" ? data["vt_tp_pago"].toUpperCase() : "NINGUNO", 20, 115);
+            doc.text(data["vt_estado"] == "c" ? "CANCELADO" : "PENDIENTE", 20, 118);
+            doc.text(data["user_nombres"] + " " + data["user_apellidos"], 20, 121);
+            doc.text("------------------------------------------------------------------", 5, 124);
+            doc.addImage(barcode.src, "JPEG", ((widthPage / 2) / 2), 125, (widthPage / 2), 15)
+
+            doc.setFontSize(4.5);
+            doc.text("Es muy importante que porte el ticket para el ingreso y salida del vehículo", 5, 145);
+        }
+
+        return doc.output('datauristring');
+    }
+    generarReporteCajaA4(data) {
+        let data_tpPago = data["data_tpPago"]
+        let dataAmountTpPago = data["dataAmountTpPago"]
+        let data_header = data["data_header"]
+        let data_ventas = data["data_ventas"]
+        let date_now = DateTime.now();
+        let doc = new jsPDF('p', 'pt', "a4");
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        // DATOS EMPRESA
+        doc.text("Reporte Punto de Venta", (widthPage / 2), 50, { align: "center" });
+        doc.setFontSize(11)
+        doc.setFont('arial', 'bold');
+        // 1 columna
+        doc.text("Empresa: ", 40, 100)
+        doc.text("RUC: ", 40, 115)
+        doc.text("Vendedor: ", 40, 130)
+        doc.text("Estado de caja: ", 40, 145)
+        doc.text("Montos de operación: ", 40, 160)
+        doc.text("Saldo inicial: ", 40, 175)
+        doc.text("Saldo final: ", 40, 190)
+        doc.text("Total caja: ", 40, 205)
+
+        doc.setFont('arial', 'normal');
+        doc.text(data_header["emp_razon_social"], 90, 100);
+        doc.text(data_header["emp_ruc"], 75, 115);
+        doc.text(data_header["user_nombres"] + " " + data_header["user_apellidos"], 95, 130);
+        doc.text(data_header["cj_estado"], 117, 145);
+        doc.text("S/ " + data_header["cj_monto_inicial"], 107, 175);
+        doc.text(data_header["cj_monto_final"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + data_header["cj_monto_final"], 100, 190);
+        doc.text(data_header["cj_total"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_inicial"]).toFixed(2), 98, 205);
+
+        // 2 columna
+        doc.setFont('arial', 'bold');
+        doc.text("Fecha reporte: ", 310, 100)
+        doc.text("Sucursal: ", 310, 115)
+        doc.text("Fecha y hora apertura: ", 310, 130)
+        if (data_header["cj_fecha_fin"]) {
+            doc.setFont('arial', 'bold');
+            doc.text("Fecha y hora cierre: ", 310, 145)
+            doc.setFont('arial', 'normal');
+            doc.text(data_header["cj_fecha_fin"], 410, 145);
+        }
+
+        doc.setFont('arial', 'normal');
+        doc.text(date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day, 386, 100);
+        doc.text(data_header["suc_descripcion"], 360, 115);
+        doc.text(data_header["cj_fecha_apertura"], 425, 130);
+        doc.line(40, 220, (widthPage) - 40, 220)
+
+        if (data["data_ventas"].length != 0) {
+            // TABLA 1
+            let rows_header = [];
+            let array = Object.keys(dataAmountTpPago)
+
+            for (let i = 0; i < data_tpPago.length; i++) {
+                if (array.includes(data_tpPago[i]["descripcion"])) {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": dataAmountTpPago[data_tpPago[i]["descripcion"]]["total"],
+                    })
+                } else {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": "0.00"
+                    })
+                }
+            }
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "Descripción", dataKey: "descripcion" },
+                { title: "Suma", dataKey: "suma" },
+            ], rows_header, {
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle", margin: "0,0,0,0" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 10 },
+                margin: { top: 240 },
+            });
+            // TABLA 2
+            let rows_ventas = [];
+            for (let y = 0; y < data_ventas.length; y++) {
+                rows_ventas.push({
+                    "id": y + 1,
+                    "t_comprobante": data_ventas[y]["tp_comprobante"],
+                    "num_docuVenta": data_ventas[y]["num_docuVenta"],
+                    "fecha_emision": data_ventas[y]["fecha_emision"],
+                    "cliente": data_ventas[y]["cliente"],
+                    "cli_numdocu": data_ventas[y]["cli_numdocu"],
+                    "total": data_ventas[y]["total"]
+                });
+            }
+            // let finalY = doc.lastAutoTable.finalY;
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "T. Comprobante", dataKey: "t_comprobante" },
+                { title: "Documento", dataKey: "num_docuVenta" },
+                { title: "Fecha emisión", dataKey: "fecha_emision" },
+                { title: "Cliente", dataKey: "cliente" },
+                { title: "Nro. Documento", dataKey: "cli_numdocu" },
+                { title: "Total", dataKey: "total" },
+            ], rows_ventas, {
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 10 },
+                // margin: { top: 400 }
+            }, {
+                // startY: 20,
+                styles: { cellPadding: 0.5, fontSize: 8 },
+            });
+
+        } else {
+            doc.text("No se encontrarón registros", 40, 240);
+        }
+        doc.save('Reporte_' + date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day + '.pdf');
+        // doc.output('dataurlnewwindow');
+    }
+    generarReporteCaja80(data) {
+        let data_tpPago = data["data_tpPago"]
+        let dataAmountTpPago = data["dataAmountTpPago"]
+        let data_header = data["data_header"]
+        let data_ventas = data["data_ventas"]
+        let date_now = DateTime.now();
+        let doc = new jsPDF("P", "mm", [80, 400]);
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        // DATOS EMPRESA
+        doc.setFontSize(12)
+        doc.text("Reporte Punto de Venta", (widthPage / 2), 15, { align: "center" });
+        doc.setFont('arial', 'bold');
+        // 1 columna
+        doc.setFontSize(9)
+        doc.text("Empresa: ", 3, 30)
+        doc.text("RUC: ", 3, 35)
+        doc.text("Vendedor: ", 3, 40)
+        doc.text("Estado de caja: ", 3, 45)
+        doc.text("Montos de operación: ", 3, 50)
+        doc.text("Saldo inicial: ", 3, 55)
+        doc.text("Saldo final: ", 3, 60)
+        doc.text("Total caja: ", 3, 65)
+
+        doc.setFont('arial', 'normal');
+        doc.text(data_header["emp_razon_social"], 17, 30);
+        doc.text(data_header["emp_ruc"], 12, 35);
+        doc.text(data_header["user_nombres"] + " " + data_header["user_apellidos"], 19, 40);
+        doc.text(data_header["cj_estado"], 25, 45);
+        doc.text("S/ " + data_header["cj_monto_inicial"], 22, 55);
+        doc.text(data_header["cj_monto_final"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_final"]).toFixed(2), 20, 60);
+        doc.text(data_header["cj_total"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_inicial"]).toFixed(2), 20, 65);
+
+        // // 2 columna
+        doc.setFont('arial', 'bold');
+        doc.text("Fecha reporte: ", 3, 75)
+        doc.text("Sucursal: ", 3, 80)
+        doc.text("Fecha y hora apertura: ", 3, 85)
+        if (data_header["cj_fecha_fin"]) {
+            doc.setFont('arial', 'bold');
+            doc.text("Fecha y hora cierre: ", 3, 90)
+            doc.setFont('arial', 'normal');
+            doc.text(data_header["cj_fecha_fin"], 32, 90);
+        }
+
+        doc.setFont('arial', 'normal');
+        doc.text(date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day, 24, 75);
+        doc.text(data_header["suc_descripcion"], 17, 80);
+        doc.text(data_header["cj_fecha_apertura"], 36, 85);
+        doc.line(3, 93, (widthPage) - 6, 93)
+
+        if (data["data_ventas"].length != 0) {
+            // TABLA 1
+            let rows_header = [];
+            let array = Object.keys(dataAmountTpPago)
+
+            for (let i = 0; i < data_tpPago.length; i++) {
+                if (array.includes(data_tpPago[i]["descripcion"])) {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": dataAmountTpPago[data_tpPago[i]["descripcion"]]["total"],
+                    })
+                } else {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": "0.00"
+                    })
+                }
+            }
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "Descripción", dataKey: "descripcion" },
+                { title: "Suma", dataKey: "suma" },
+            ], rows_header, {
+                margin: { left: 2, right: 2, top: 98 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle", margin: "0,0,0,0" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 9 },
+                headStyles: { fontSize: 9 },
+            });
+            // TABLA 2
+            let rows_ventas = [];
+            for (let y = 0; y < data_ventas.length; y++) {
+                rows_ventas.push({
+                    "id": y + 1,
+                    "t_comprobante": data_ventas[y]["tp_comprobante"],
+                    "num_docuVenta": data_ventas[y]["num_docuVenta"],
+                    "total": data_ventas[y]["total"]
+                });
+            }
+            // let finalY = doc.lastAutoTable.finalY;
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "T. Comprobante", dataKey: "t_comprobante" },
+                { title: "Documento", dataKey: "num_docuVenta" },
+                { title: "Total", dataKey: "total" },
+            ], rows_ventas, {
+                margin: { left: 2, right: 2, top: 10 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 9 },
+                headStyles: { fontSize: 9 }
+            }, {
+                styles: { cellPadding: 0.5, fontSize: 8 },
+            });
+
+        } else {
+            doc.text("No se encontrarón registros", 3, 98);
+        }
+        doc.save('Reporte_' + date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day + '.pdf');
+        // doc.output('dataurlnewwindow');
+    }
+    generarReporteCaja58(data) {
+        let data_tpPago = data["data_tpPago"]
+        let dataAmountTpPago = data["dataAmountTpPago"]
+        let data_header = data["data_header"]
+        let data_ventas = data["data_ventas"]
+        let date_now = DateTime.now();
+        let doc = new jsPDF("P", "mm", [58, 400]);
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        // DATOS EMPRESA
+        doc.setFontSize(10)
+        doc.text("Reporte Punto de Venta", (widthPage / 2), 10, { align: "center" });
+        doc.setFont('arial', 'bold');
+        // 1 columna
+        doc.setFontSize(7)
+        doc.text("Empresa: ", 3, 20)
+        doc.text("RUC: ", 3, 25)
+        doc.text("Vendedor: ", 3, 30)
+        doc.text("Estado de caja: ", 3, 35)
+        doc.text("Montos de operación: ", 3, 40)
+        doc.text("Saldo inicial: ", 3, 45)
+        doc.text("Saldo final: ", 3, 50)
+        doc.text("Total caja: ", 3, 55)
+
+        doc.setFont('arial', 'normal');
+        doc.text(data_header["emp_razon_social"], 14, 20);
+        doc.text(data_header["emp_ruc"], 10, 25);
+        doc.text(data_header["user_nombres"] + " " + data_header["user_apellidos"], 15, 30);
+        doc.text(data_header["cj_estado"], 20, 35);
+        doc.text("S/ " + data_header["cj_monto_inicial"], 18, 45);
+        doc.text(data_header["cj_monto_final"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_final"]).toFixed(2), 16, 50);
+        doc.text(data_header["cj_total"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_inicial"]).toFixed(2), 16, 55);
+
+        // 2 columna
+        doc.setFont('arial', 'bold');
+        doc.text("Fecha reporte: ", 3, 65)
+        doc.text("Sucursal: ", 3, 70)
+        doc.text("Fecha y hora apertura: ", 3, 75)
+        if (data_header["cj_fecha_fin"]) {
+            doc.setFont('arial', 'bold');
+            doc.text("Fecha y hora cierre: ", 3, 80)
+            doc.setFont('arial', 'normal');
+            doc.text(data_header["cj_fecha_fin"], 25, 80);
+        }
+
+        doc.setFont('arial', 'normal');
+        doc.text(date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day, 19, 65);
+        doc.text(data_header["suc_descripcion"], 14, 70);
+        doc.text(data_header["cj_fecha_apertura"], 28, 75);
+        doc.line(3, 83, (widthPage) - 6, 83)
+
+        if (data["data_ventas"].length != 0) {
+            // TABLA 1
+            let rows_header = [];
+            let array = Object.keys(dataAmountTpPago)
+
+            for (let i = 0; i < data_tpPago.length; i++) {
+                if (array.includes(data_tpPago[i]["descripcion"])) {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": dataAmountTpPago[data_tpPago[i]["descripcion"]]["total"],
+                    })
+                } else {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": "0.00"
+                    })
+                }
+            }
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "Descripción", dataKey: "descripcion" },
+                { title: "Suma", dataKey: "suma" },
+            ], rows_header, {
+                margin: { left: 2, right: 2, top: 88 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle", margin: "0,0,0,0" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 7 },
+                headStyles: { fontSize: 7 },
+            });
+            // TABLA 2
+            let rows_ventas = [];
+            for (let y = 0; y < data_ventas.length; y++) {
+                rows_ventas.push({
+                    "id": y + 1,
+                    "t_comprobante": data_ventas[y]["tp_comprobante"],
+                    "num_docuVenta": data_ventas[y]["num_docuVenta"],
+                    "total": data_ventas[y]["total"]
+                });
+            }
+            // let finalY = doc.lastAutoTable.finalY;
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "T. Comprobante", dataKey: "t_comprobante" },
+                { title: "Documento", dataKey: "num_docuVenta" },
+                { title: "Total", dataKey: "total" },
+            ], rows_ventas, {
+                margin: { left: 2, right: 2, top: 10 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 7 },
+                headStyles: { fontSize: 7 }
+            }, {
+                styles: { cellPadding: 0.5, fontSize: 8 },
+            });
+
+        } else {
+            doc.text("No se encontrarón registros", 3, 88);
+        }
+        doc.save('Reporte_' + date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day + '.pdf');
+        // doc.output('dataurlnewwindow');
+    }
+    generarReporteCaja57(data) {
+        let data_tpPago = data["data_tpPago"]
+        let dataAmountTpPago = data["dataAmountTpPago"]
+        let data_header = data["data_header"]
+        let data_ventas = data["data_ventas"]
+        let date_now = DateTime.now();
+        let doc = new jsPDF("P", "mm", [57, 400]);
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        // DATOS EMPRESA
+        doc.setFontSize(9)
+        doc.text("Reporte Punto de Venta", (widthPage / 2), 10, { align: "center" });
+        doc.setFont('arial', 'bold');
+        // 1 columna
+        doc.setFontSize(6)
+        doc.text("Empresa: ", 3, 20)
+        doc.text("RUC: ", 3, 25)
+        doc.text("Vendedor: ", 3, 30)
+        doc.text("Estado de caja: ", 3, 35)
+        doc.text("Montos de operación: ", 3, 40)
+        doc.text("Saldo inicial: ", 3, 45)
+        doc.text("Saldo final: ", 3, 50)
+        doc.text("Total caja: ", 3, 55)
+
+        doc.setFont('arial', 'normal');
+        doc.text(data_header["emp_razon_social"], 13, 20);
+        doc.text(data_header["emp_ruc"], 9, 25);
+        doc.text(data_header["user_nombres"] + " " + data_header["user_apellidos"], 14, 30);
+        doc.text(data_header["cj_estado"], 18, 35);
+        doc.text("S/ " + data_header["cj_monto_inicial"], 16, 45);
+        doc.text(data_header["cj_monto_final"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_final"]).toFixed(2), 14, 50);
+        doc.text(data_header["cj_total"] ? "S/ " + (parseFloat(data_header["cj_total"]) + parseFloat(data_header["cj_monto_inicial"])).toFixed(2) : "S/ " + parseFloat(data_header["cj_monto_inicial"]).toFixed(2), 14, 55);
+
+        // 2 columna
+        doc.setFont('arial', 'bold');
+        doc.text("Fecha reporte: ", 3, 65)
+        doc.text("Sucursal: ", 3, 70)
+        doc.text("Fecha y hora apertura: ", 3, 75)
+        if (data_header["cj_fecha_fin"]) {
+            doc.setFont('arial', 'bold');
+            doc.text("Fecha y hora cierre: ", 3, 80)
+            doc.setFont('arial', 'normal');
+            doc.text(data_header["cj_fecha_fin"], 22, 80);
+        }
+
+        doc.setFont('arial', 'normal');
+        doc.text(date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day, 17, 65);
+        doc.text(data_header["suc_descripcion"], 13, 70);
+        doc.text(data_header["cj_fecha_apertura"], 25, 75);
+        doc.line(3, 83, (widthPage) - 6, 83)
+
+        if (data["data_ventas"].length != 0) {
+            // TABLA 1
+            let rows_header = [];
+            let array = Object.keys(dataAmountTpPago)
+
+            for (let i = 0; i < data_tpPago.length; i++) {
+                if (array.includes(data_tpPago[i]["descripcion"])) {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": dataAmountTpPago[data_tpPago[i]["descripcion"]]["total"],
+                    })
+                } else {
+                    rows_header.push({
+                        "id": i + 1,
+                        "descripcion": data_tpPago[i]["descripcion"],
+                        "suma": "0.00"
+                    })
+                }
+            }
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "Descripción", dataKey: "descripcion" },
+                { title: "Suma", dataKey: "suma" },
+            ], rows_header, {
+                margin: { left: 2, right: 2, top: 88 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle", margin: "0,0,0,0" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 6 },
+                headStyles: { fontSize: 6 },
+            });
+            // TABLA 2
+            let rows_ventas = [];
+            for (let y = 0; y < data_ventas.length; y++) {
+                rows_ventas.push({
+                    "id": y + 1,
+                    "t_comprobante": data_ventas[y]["tp_comprobante"],
+                    "num_docuVenta": data_ventas[y]["num_docuVenta"],
+                    "total": data_ventas[y]["total"]
+                });
+            }
+            // let finalY = doc.lastAutoTable.finalY;
+            doc.autoTable([
+                { title: "#", dataKey: "id" },
+                { title: "T. Comprobante", dataKey: "t_comprobante" },
+                { title: "Documento", dataKey: "num_docuVenta" },
+                { title: "Total", dataKey: "total" },
+            ], rows_ventas, {
+                margin: { left: 2, right: 2, top: 10 },
+                tableWidth: widthPage - 6,
+                styles: { lineWidth: 0.2, lineColor: "gray", halign: "center", valign: "middle" },
+                bodyStyles: { fillColor: "#ffffff", fontSize: 6 },
+                headStyles: { fontSize: 6 }
+            }, {
+                styles: { cellPadding: 0.5, fontSize: 8 },
+            });
+
+        } else {
+            doc.text("No se encontrarón registros", 3, 88);
+        }
+        doc.save('Reporte_' + date_now.c.year + "-" + date_now.c.month + "-" + date_now.c.day + '.pdf');
+        // doc.output('dataurlnewwindow');
+    }
+    generarContratoAbonado80() {
+        let doc = new jsPDF("P", "mm", [80, 100]);
+        let widthPage = doc.internal.pageSize.getWidth();
+        let heightPage = doc.internal.pageSize.getHeight();
+        doc.setFontSize(9)
+        doc.addImage("public/image/ticket/terminos_condiciones.png", "png", ((widthPage / 2) - 5), 5, 10, 10);
+        doc.text("Términos y Condiciones", (widthPage / 2), 22, { align: "center" });
+        doc.setFont('arial', 'bold');
+        doc.setFontSize(6)
+        let detalle = [
+            "El ticket de ABONADO deberá ser recogida por el Cliente de acuerdo con las indicaciones del gestor comercial, siendo que se permitirá el acceso al Cliente desde la fecha de inicio consignado en el registro del vehículo.",
+            "El cliente debe portar su ticket de ABONADO para el ingreso y salida, en caso lo pierda el cliente deberá de abonar el monto de S/ 1.00 para la reposición del ticktet.",
+            "El registro de la placa del vehículo, debe ser el mismo al ingreso y salida durante el tiempo de contrata.",
+            "El ingreso y salida del vehículo será bajo el horario de atención de nuestra cochera."
+        ];
+        let list_detalle = [];
+        for (let x = 0; x < detalle.length; x++) {
+            list_detalle.push({
+                "column1": (x + 1) + ". " + detalle[x],
+            });
+        }
+        doc.autoTable([
+            { title: `Los presentes términos y condiciones se aplican a nuestros clientes ABONADOS interesados en estacionar su(s) vehículo(s) en nuestra area de estacionamiento, como cliente ABONADO debe seguir las siguientes normas:`, key: "column1" },
+        ], list_detalle, {
+            margin: { left: 2, right: 2, top: 25 },
+            tableWidth: widthPage - 6,
+            theme: "plain",
+            styles: { valign: "middle", margin: "0,0,0,0" },
+            bodyStyles: { fontSize: 6, halign: "justify" },
+            headStyles: { fontSize: 6, fillColor: "#ffffff", textColor: "black", fontStyle: "normal", halign: "justify" },
+        });
+        doc.save('terminos_condiciones.pdf');
+        // doc.output('dataurlnewwindow');
+    }
+}
+
+export { PDF }
