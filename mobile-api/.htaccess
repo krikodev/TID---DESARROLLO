@@ -1,0 +1,5 @@
+# Protege las carpetas privadas incluso al copiar la API dentro de htdocs.
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(config|src|bin|tests|storage)(/|$) - [F,L]
+RewriteRule ^(composer\.json|README\.md|openapi\.json)$ - [F,L]
