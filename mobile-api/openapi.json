@@ -1,0 +1,482 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "TID Mobile Read-Only API",
+    "version": "1.0.0",
+    "description": "API de consulta por empresa con base separada y tokens revocables. No registra entregas."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local"
+    }
+  ],
+  "security": [
+    {
+      "company": [],
+      "bearer": []
+    }
+  ],
+  "paths": {
+    "/v1/health": {
+      "get": {
+        "summary": "Comprueba API y empresa",
+        "security": [
+          {
+            "company": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/auth/me": {
+      "get": {
+        "summary": "Usuario autenticado",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/resumen": {
+      "get": {
+        "summary": "Resumen real por terminal",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fecha",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/encomiendas/dni": {
+      "get": {
+        "summary": "Encomiendas pagadas en destino",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dni",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/encomiendas/historial": {
+      "get": {
+        "summary": "Entregas de una fecha",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fecha",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "filtro",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/encomiendas/tracking": {
+      "get": {
+        "summary": "Consulta por tracking",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "codigo_tracking",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/encomiendas/comprobante": {
+      "get": {
+        "summary": "Consulta por comprobante",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "serie",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "correlativo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fecha",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/encomiendas/imagenes": {
+      "get": {
+        "summary": "URLs existentes de evidencia",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "codigo_tracking",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Consulta exitosa; listas paginadas con data, pagination y request_id"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          },
+          "422": {
+            "description": "Datos inválidos"
+          },
+          "429": {
+            "description": "Límite de solicitudes"
+          },
+          "503": {
+            "description": "Servicio no disponible"
+          }
+        }
+      }
+    },
+    "/v1/auth/login": {
+      "post": {
+        "summary": "Iniciar sesión sin alterar cuentas del sistema",
+        "security": [
+          {
+            "company": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "email",
+                  "pass"
+                ],
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "pass": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "access_token, token_type Bearer, expires_at UTC, user y company"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          },
+          "429": {
+            "description": "Demasiados intentos"
+          }
+        }
+      }
+    },
+    "/v1/auth/logout": {
+      "post": {
+        "summary": "Revocar token actual",
+        "security": [
+          {
+            "company": [],
+            "bearer": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sesión cerrada"
+          },
+          "401": {
+            "description": "Sesión inválida"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "company": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Company-Domain"
+      },
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "opaque 256-bit token"
+      }
+    }
+  }
+}
